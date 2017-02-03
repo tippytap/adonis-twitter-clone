@@ -1,0 +1,22 @@
+{% extends 'master' %}
+
+{% block content %}
+  {{ form.open({ action: 'UserController.store' }) }}
+  {{ csrfField }}
+  <div>
+    {{ form.label('username', 'User name') }}
+    {{ form.text('username') }}
+  </div>
+  <div>
+    {{ form.label('email', 'Email') }}
+    {{ form.text('email') }}
+  </div>
+  <div>
+    {{ form.label('password', 'Password') }}
+    {{ form.password('password') }}
+  </div>
+  <div>
+    {{ form.submit('Register') }}
+  </div>
+  {{ form.close() }}
+{% endblock %}

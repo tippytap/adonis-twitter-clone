@@ -18,9 +18,8 @@
 const Route = use('Route')
 
 Route.get('/').render('welcome')
-Route.get('/signup').render('/signup')
+Route.get('/register').render('register')
 Route.get('/login').render('login')
-Route.get('/home').render('home')
 
 Route.group('tweets', function(){
   Route.resource('tweet', 'TweetController')
@@ -28,9 +27,5 @@ Route.group('tweets', function(){
 
 Route.group('users', function(){
   Route.resource('users', 'UserController')
+  Route.get('/home/:id', 'UserController.home')
 })
-
-
-
-//Route.get('/delete/:id').render('/delete')
-

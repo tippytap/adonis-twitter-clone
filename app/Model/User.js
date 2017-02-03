@@ -5,6 +5,14 @@ const Hash = use('Hash')
 
 class User extends Lucid {
 
+  static get rules(){
+    return {
+      username: "required|unique:users",
+      email: "required|email|unique:users",
+      password: "required"
+    }
+  }
+
   static boot () {
     super.boot()
 

@@ -13,23 +13,27 @@
 </head>
 <body>
 
+  {% if old('messages') %}
+  <section>
+    {% for message in old('messages') %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if old('errors') %}
+    <section>
+      {% for error in old('errors') %}
+        <li>{{ error.message }}</li>
+      {% endfor %}
+    </section>
+  {% endif %}
+
   <section>
     <div class="__wrapper">
       {% block content %}{% endblock %}
 
       {% block footer %}
-        <div class="__footer">
-          <ul>
-            <li>
-              <a href="https://twitter.com/intent/tweet?url=http://adonisjs.com&text=I am using AdonisJs, a practical MVC framework for nodejs&hashtags=nodejs,adonisframework" target="_blank">
-                <img src="/assets/twitter.svg">
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/adonisjs/adonis-framework" target="_blank"><img src="/assets/github.svg"></a>
-            </li>
-          </ul>
-        </div>
       {% endblock %}
     </div>
   </section>
