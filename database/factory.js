@@ -34,7 +34,6 @@ Factory.blueprint('App/Model/User', (fake) => {
 
 Factory.blueprint('App/Model/Tweet', (fake) => {
   return {
-    user_id: fake.user_id(),
     content: fake.string()
   }
 })

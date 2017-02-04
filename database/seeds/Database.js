@@ -20,11 +20,13 @@ const Tweet = use('App/Model/Tweet')
 class DatabaseSeeder {
 
   * run () {
-    const users = yield Factory.model(User).create(5)
+    const users = yield Factory.model('App/Model/User').create(5)
 
     users.each(function * (user){
-      const tweet = Factory.model(Tweet).make()
-      yield user.tweets().save(tweet)
+      for(let i = 0; i < 100; i++){
+        const tweets = Factory.model('App/Model/Tweet').make()
+        yield user.tweets().save(tweets)
+      }
     })
   }
 
