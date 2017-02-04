@@ -24,7 +24,17 @@ const Factory = use('Factory')
 Factory.blueprint('App/Model/User', (fake) => {
   return {
     username: fake.username(),
+    firstname: fake.first(),
+    lastname: fake.last(),
+    profile_img_url: fake.string(),
     email: fake.email(),
     password: fake.password()
+  }
+})
+
+Factory.blueprint('App/Model/Tweet', (fake) => {
+  return {
+    user_id: fake.user_id(),
+    content: fake.string()
   }
 })

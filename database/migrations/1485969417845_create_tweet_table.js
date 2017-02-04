@@ -9,7 +9,7 @@ class TweetsTableSchema extends Schema {
       table.increments()
       table.timestamps()
       table.integer('user_id').references('users.id').unsigned()
-      table.string('text')
+      table.string('content')
     })
   }
 

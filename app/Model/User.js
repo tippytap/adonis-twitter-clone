@@ -26,6 +26,10 @@ class User extends Lucid {
     })
   }
 
+  tweets(){
+    return this.hasMany('App/Model/Tweet')
+  }
+
   apiTokens () {
     return this.hasMany('App/Model/Token')
   }

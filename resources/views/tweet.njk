@@ -1,0 +1,10 @@
+{% extends 'master' %}
+
+{% block content %}
+  {% block tweet %}
+    <section>
+      {{ tweet.content }}
+    </section>
+    {% block tweetControls %}{% endblock %}
+  {% endblock %}
+{% endblock %}

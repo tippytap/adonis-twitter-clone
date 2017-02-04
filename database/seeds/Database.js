@@ -12,13 +12,22 @@
 |
 */
 
-// const Factory = use('Factory')
+const Factory = use('Factory')
+
+const User = use('App/Model/User')
+const Tweet = use('App/Model/Tweet')
 
 class DatabaseSeeder {
 
   * run () {
-    // yield Factory.model('App/Model/User').create(5)
+    const users = yield Factory.model(User).create(5)
+
+    users.each(function * (user){
+      const tweet = Factory.model(Tweet).make()
+      yield user.tweets().save(tweet)
+    })
   }
+
 
 }
 

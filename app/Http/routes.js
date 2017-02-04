@@ -21,11 +21,11 @@ Route.get('/').render('welcome')
 Route.get('/register').render('register')
 Route.get('/login').render('login')
 
-Route.group('tweets', function(){
+Route.group('tweets', () => {
   Route.resource('tweet', 'TweetController')
 })
 
-Route.group('users', function(){
+Route.group('users', () => {
   Route.resource('users', 'UserController')
   Route.get('/home/:id', 'UserController.home')
 })
