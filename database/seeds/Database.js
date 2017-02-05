@@ -23,7 +23,7 @@ class DatabaseSeeder {
     const users = yield Factory.model('App/Model/User').create(5)
 
     users.each(function * (user){
-      for(let i = 0; i < 100; i++){
+      for(let i = 0; i < 20; i++){
         const tweets = Factory.model('App/Model/Tweet').make()
         yield user.tweets().save(tweets)
       }

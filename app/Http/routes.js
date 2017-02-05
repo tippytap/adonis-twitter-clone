@@ -17,7 +17,12 @@
 
 const Route = use('Route')
 
-Route.get('/').render('welcome')
+const Tweet = use('App/Model/Tweet')
+
+Route.get('/', function * (request, response){
+  const tweets = yield Tweet.all()
+  yield response.sendView('welcome', { 'tweets': tweets.toJSON() })
+})
 Route.get('/register').render('register')
 Route.get('/login').render('login')
 

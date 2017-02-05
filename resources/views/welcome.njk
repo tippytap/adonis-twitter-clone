@@ -7,4 +7,13 @@
     <br>
     <a href="/register">Register</a>
   </section>
+  <section>
+    <br>
+    <ul>
+    {% for tweet in tweets %}
+      <li>{{ tweet.user_id }}:  <span>{{ tweet.content }}</span></li>
+      <br>
+    {% endfor %}
+    </ul>
+  </section>
 {% endblock %}
