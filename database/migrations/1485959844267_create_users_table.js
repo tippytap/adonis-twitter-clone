@@ -10,7 +10,7 @@ class UsersTableSchema extends Schema {
       table.string('username', 80).notNullable().unique()
       table.string('firstname', 254)
       table.string('lastname', 254)
-      table.string('profile_img_url')
+      table.string('profile_img_path')
       table.string('email', 254).notNullable().unique()
       table.string('password', 60).notNullable()
       table.timestamps()

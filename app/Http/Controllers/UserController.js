@@ -6,7 +6,7 @@ const User = use('App/Model/User')
 class UserController {
 
   * index(request, response) {
-    //
+    // meh
   }
 
   * store(request, response) {
@@ -45,6 +45,14 @@ class UserController {
 
   }
 
+  * home(request, response){
+    const user = yield request.auth.getUser()
+    response.sendView('userIndex', { 'user': user.toJSON()})
+  }
+
+  /**
+   * User profile
+   * */
   * show(request, response) {
     //
   }
@@ -59,6 +67,21 @@ class UserController {
 
   * destroy(request, response) {
     //
+  }
+
+  /**
+   * User login
+   * */
+  * login(request, response){
+    const email = request.input('email')
+    const password = request.input('password')
+    const login = yield request.auth.attempt(email, password)
+
+    if(login){
+      yield request.withAll().andWith({messages: ['Logged in!']}).flash()
+      response.redirect('back')
+    }
+
   }
 
 }

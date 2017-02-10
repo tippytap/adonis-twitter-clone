@@ -1,11 +1,20 @@
 {% extends 'master' %}
 
 {% block content %}
+  <a href="/"><- back</a>
   {{ form.open({ action: 'UserController.store' }) }}
   {{ csrfField }}
   <div>
     {{ form.label('username', 'User name') }}
     {{ form.text('username') }}
+  </div>
+  <div>
+    {{ form.label('first', 'First name') }}
+    {{ form.text('first') }}
+  </div>
+  <div>
+    {{ form.label('last', 'Last name') }}
+    {{ form.text('last') }}
   </div>
   <div>
     {{ form.label('email', 'Email') }}

@@ -11,7 +11,7 @@
     <br>
     <ul>
     {% for tweet in tweets %}
-      <li>{{ tweet.user_id }}:  <span>{{ tweet.content }}</span></li>
+      <li>User {{ tweet.user_id}}:  <span>{{ tweet.content }}</span></li>
       <br>
     {% endfor %}
     </ul>

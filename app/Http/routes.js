@@ -18,19 +18,29 @@
 const Route = use('Route')
 
 const Tweet = use('App/Model/Tweet')
+const User = use('App/Model/User')
 
+// VANILLA ROUTES
 Route.get('/', function * (request, response){
+  const isLoggedIn = yield request.auth.check()
+  if(isLoggedIn){
+    // response.redirect('/home/' + user.attributes.id)
+  }
+
   const tweets = yield Tweet.all()
   yield response.sendView('welcome', { 'tweets': tweets.toJSON() })
 })
 Route.get('/register').render('register')
 Route.get('/login').render('login')
 
+// TWEET GROUP
 Route.group('tweets', () => {
   Route.resource('tweet', 'TweetController')
-})
+}).middleware('auth')
 
+// USER GROUP
 Route.group('users', () => {
-  Route.resource('users', 'UserController')
-  Route.get('/home/:id', 'UserController.home')
+  Route.resource('users', 'UserController').middleware('auth')
+  Route.get('/home/:id', 'UserController.home').middleware('auth')
+  Route.post('/login', 'UserController.login')
 })
