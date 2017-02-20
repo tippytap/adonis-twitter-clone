@@ -3,15 +3,12 @@
 {% block content %}
   <section>
     <h1>Welcome to &quot;Twitter&quot;</h1>
-    <a href="/login">Log in</a>
-    <br>
-    <a href="/register">Register</a>
   </section>
   <section>
     <br>
     <ul>
     {% for tweet in tweets %}
-      <li>User {{ tweet.user_id}}:  <span>{{ tweet.content }}</span></li>
+      <li>User {{ tweet.user_id }}:  <span>{{ tweet.content }}</span></li>
       <br>
     {% endfor %}
     </ul>

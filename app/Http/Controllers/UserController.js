@@ -47,7 +47,7 @@ class UserController {
 
   * home(request, response){
     const user = yield request.auth.getUser()
-    response.sendView('userIndex', { 'user': user.toJSON()})
+    yield response.sendView('userIndex', { 'user': user.toJSON()})
   }
 
   /**
@@ -79,9 +79,15 @@ class UserController {
 
     if(login){
       yield request.withAll().andWith({messages: ['Logged in!']}).flash()
-      response.redirect('back')
+      response.redirect('/')
     }
 
+  }
+
+  * logout(request, response){
+    // console.log(request.auth)
+    yield request.auth.logout()
+    response.redirect('back')
   }
 
 }

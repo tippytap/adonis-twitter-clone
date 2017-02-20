@@ -10,9 +10,21 @@
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700,900' rel='stylesheet' type='text/css'>
   <link rel="icon" href="/assets/favicon.png" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="style.css">
-  {#<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css"/>#}
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css"/>
 </head>
 <body>
+
+  <header>
+    <nav>
+      {% if currentUser %}
+        <a href="/home">Home</a>
+        <a href="/logout">Log out</a>
+      {% else %}
+        <a href="/login">Log in</a>&nbsp;&nbsp;--&nbsp;
+        <a href="/register">Register</a>
+      {% endif %}
+    </nav>
+  </header>
 
   {% if old('messages') %}
   <section>
@@ -39,6 +51,6 @@
     </div>
   </section>
 
-{#<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js"></script>#}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js"></script>
 </body>
 </html>
