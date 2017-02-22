@@ -86,7 +86,7 @@ class UserController {
 
   * logout(request, response){
     yield request.auth.logout()
-    response.redirect('back')
+    response.redirect('/')
   }
 
 }
