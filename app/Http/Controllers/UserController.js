@@ -73,6 +73,14 @@ class UserController {
    * User login
    * */
   * login(request, response){
+
+    const validation = yield Validator.validate(request.all(), User.rules)
+
+    if(validation.fails()){
+      yield request.withAll().andWith({errors: validation.messages()}).flash()
+      response.redirect('back')
+    }
+
     const email = request.input('email')
     const password = request.input('password')
     const login = yield request.auth.attempt(email, password)
