@@ -34,6 +34,10 @@ class User extends Lucid {
     return this.hasMany('App/Model/Token')
   }
 
+  followers(){
+    return this.hasMany('App/Model/Following')
+  }
+
 }
 
 module.exports = User
