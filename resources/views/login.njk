@@ -1,19 +1,30 @@
 {% extends 'master' %}
 
 {% block content %}
-  <a href="/"><- back</a>
-  {{ form.open({ action: 'UserController.login' }) }}
-      {{ csrfField }}
-      <div>
-        {{ form.label('email', 'Email') }}
-        {{ form.text('email') }}
-      </div>
-      <div>
-        {{ form.label('password', 'Password') }}
-        {{ form.password('password') }}
-      </div>
-      <div>
-        {{ form.submit('Log in') }}
-      </div>
-  {{ form.close() }}
+  <section class="small-9 columns">
+    <h2>Welcome to "Twitter"</h2>
+    <h5>You don't win friends with salad.</h5>
+    <p>
+      Facts are meaningless. You could use facts to prove anything that's even remotely true!
+      You don't like your job, you don't strike. You go in every day and do it really half-assed.
+      That's the American way.
+    </p>
+  </section>
+  <section class="small-3 columns">
+    {{ form.open({ action: 'UserController.login' }) }}
+    {{ csrfField }}
+    <div>
+      {{ form.label('email', 'Email') }}
+      {{ form.text('email') }}
+    </div>
+    <div>
+      {{ form.label('password', 'Password') }}
+      {{ form.password('password') }}
+    </div>
+    <div>
+      {{ form.submit('Log in', '', {class: 'button'}) }}
+      <a href="/register" class="button secondary">Register</a>
+    </div>
+    {{ form.close() }}
+  </section>
 {% endblock %}

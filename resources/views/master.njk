@@ -14,15 +14,26 @@
 </head>
 <body>
 
-  <header>
-    <nav>
-      {% if currentUser %}
-        <a href="/home">Home</a>
-        <a href="/logout">Log out</a>
-      {% else %}
-        <a href="/login">Log in</a>&nbsp;&nbsp;--&nbsp;
-        <a href="/register">Register</a>
-      {% endif %}
+  <header class="row">
+    <nav class="small-12 columns">
+      <h1 class="small-3 columns"><a href="/">"Twitter"</a></h1>
+      <ul class="menu small-9 columns">
+        {% if currentUser %}
+          <li>
+            <a href="/home">Home</a>
+          </li>
+          <li>
+            <a href="/logout">Log out</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="/login">Log in</a>
+          </li>
+          <li>
+            <a href="/register">Register</a>
+          </li>
+        {% endif %}
+      </ul>
     </nav>
   </header>
 
@@ -43,7 +54,7 @@
   {% endif %}
 
   <section>
-    <div class="__wrapper">
+    <div class="__wrapper row">
       {% block content %}{% endblock %}
 
       {% block footer %}

@@ -1,31 +1,32 @@
 {% extends 'master' %}
 
 {% block content %}
-  <a href="/"><- back</a>
-  {{ form.open({ action: 'UserController.store' }) }}
-  {{ csrfField }}
-  <div>
-    {{ form.label('username', 'User name') }}
-    {{ form.text('username') }}
-  </div>
-  <div>
-    {{ form.label('first', 'First name') }}
-    {{ form.text('first') }}
-  </div>
-  <div>
-    {{ form.label('last', 'Last name') }}
-    {{ form.text('last') }}
-  </div>
-  <div>
-    {{ form.label('email', 'Email') }}
-    {{ form.text('email') }}
-  </div>
-  <div>
-    {{ form.label('password', 'Password') }}
-    {{ form.password('password') }}
-  </div>
-  <div>
-    {{ form.submit('Register') }}
-  </div>
-  {{ form.close() }}
+  <section class="small-6 columns">
+    {{ form.open({ action: 'UserController.store' }) }}
+    {{ csrfField }}
+    <div>
+      {{ form.label('username', 'User name') }}
+      {{ form.text('username') }}
+    </div>
+    <div>
+      {{ form.label('first', 'First name') }}
+      {{ form.text('first') }}
+    </div>
+    <div>
+      {{ form.label('last', 'Last name') }}
+      {{ form.text('last') }}
+    </div>
+    <div>
+      {{ form.label('email', 'Email') }}
+      {{ form.text('email') }}
+    </div>
+    <div>
+      {{ form.label('password', 'Password') }}
+      {{ form.password('password') }}
+    </div>
+    <div>
+      {{ form.submit('Register', '', {class: 'button'}) }}
+    </div>
+    {{ form.close() }}
+  </section>
 {% endblock %}

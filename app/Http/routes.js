@@ -27,8 +27,7 @@ Route.get('/', function * (request, response){
     response.redirect('home')
     return
   }
-  const tweets = yield Tweet.all()
-  yield response.sendView('welcome', { 'tweets': tweets.toJSON() })
+  response.redirect('/login')
 })
 Route.get('/register').render('register')
 Route.get('/login').render('login')
