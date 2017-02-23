@@ -74,21 +74,19 @@ class UserController {
    * */
   * login(request, response){
 
-    const validation = yield Validator.validate(request.all(), User.rules)
-
-    if(validation.fails()){
-      yield request.withAll().andWith({errors: validation.messages()}).flash()
-      response.redirect('back')
-    }
-
     const email = request.input('email')
     const password = request.input('password')
-    const login = yield request.auth.attempt(email, password)
 
-    if(login){
-      yield request.withAll().andWith({messages: ['Logged in!']}).flash()
-      response.redirect('/')
+    try{
+      yield request.auth.attempt(email, password)
+      yield request.withAll().andWith({messages: [{message: 'Logged in!'}]}).flash()
     }
+    catch(e){
+      yield request.withAll().andWith({errors: [{message: 'Incorrect email and/or password.'}]}).flash()
+      response.redirect('back')
+      return
+    }
+    response.redirect('/')
 
   }
 

@@ -35,18 +35,24 @@
   </header>
 
   {% if old('messages') %}
-  <section>
+  <section class="callout success small">
+    <ul>
     {% for message in old('messages') %}
       <li>{{ message }}</li>
     {% endfor %}
+    </ul>
   </section>
   {% endif %}
 
   {% if old('errors') %}
-    <section>
-      {% for error in old('errors') %}
-        <li>{{ error.message }}</li>
-      {% endfor %}
+    <section class="row">
+      <div class="callout alert small">
+          <ul>
+          {% for error in old('errors') %}
+            <li>{{ error.message }}</li>
+          {% endfor %}
+          </ul>
+      </div>
     </section>
   {% endif %}
 
