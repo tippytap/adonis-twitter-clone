@@ -11,6 +11,7 @@ class UserController {
 
   * store(request, response) {
 
+    console.log('boop')
     // get all inputs
     const userInputs = request.all()
 
@@ -19,7 +20,7 @@ class UserController {
     const validation = yield Validator.validate(userInputs, User.rules)
 
     // if our validation has failed, then redirect to the register screen and flash the
-    // error messages. this is done by yielding the request and calling redirect ont he response obj
+    // error messages. this is done by yielding to the request and calling redirect on the response obj
     if(validation.fails()){
       yield request.withAll().andWith({errors: validation.messages()}).flash()
       response.redirect('back')
@@ -79,7 +80,7 @@ class UserController {
 
     try{
       yield request.auth.attempt(email, password)
-      yield request.withAll().andWith({messages: [{message: 'Logged in!'}]}).flash()
+      yield request.withAll().andWith({messages: ['Logged in!']}).flash()
     }
     catch(e){
       yield request.withAll().andWith({errors: [{message: 'Incorrect email and/or password.'}]}).flash()

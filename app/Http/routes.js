@@ -39,7 +39,8 @@ Route.group('tweets', () => {
 
 // USER GROUP
 Route.group('users', () => {
-  Route.resource('users', 'UserController').middleware('auth')
+  Route.resource('users', 'UserController').except('store').middleware('auth')
+  Route.post('users/store', 'UserController.store')
   Route.get('/home', 'UserController.home').as('home').middleware('auth')
   Route.post('/login', 'UserController.login')
   Route.get('/logout', 'UserController.logout')
