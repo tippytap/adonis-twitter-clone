@@ -16,6 +16,7 @@ const Factory = use('Factory')
 
 const User = use('App/Model/User')
 const Tweet = use('App/Model/Tweet')
+const Following = use('App/Model/Following')
 
 class DatabaseSeeder {
 

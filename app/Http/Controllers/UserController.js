@@ -5,13 +5,8 @@ const User = use('App/Model/User')
 
 class UserController {
 
-  * index(request, response) {
-    // meh
-  }
-
   * store(request, response) {
 
-    console.log('boop')
     // get all inputs
     const userInputs = request.all()
 
@@ -33,6 +28,8 @@ class UserController {
     user.username = userInputs.username
     user.password = userInputs.password
     user.email = userInputs.email
+    user.firstname = userInputs.firstname
+    user.lastname = userInputs.lastname
 
     // save the new user to the database, but we have to make sure to yield it
     // because this is a generator function and it won't do anything otherwise
