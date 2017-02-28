@@ -2,7 +2,7 @@
 
 const Validator = use('Validator')
 const User = use('App/Model/User')
-const Following = use('App/Model/Follower')
+const Follower = use('App/Model/Follower')
 
 class UserController {
 
@@ -46,7 +46,9 @@ class UserController {
 
   * home(request, response){
     const user = yield request.auth.getUser()
-    yield response.sendView('userIndex', { 'user': user.toJSON()})
+    const following = yield Follower.query().where('follower', user.id).fetch()
+    let followingUsers = [];
+    yield response.sendView('userIndex', { 'user': user.toJSON(), 'following': following.toJSON()})
   }
 
   /**
