@@ -2,6 +2,7 @@
 
 const Validator = use('Validator')
 const User = use('App/Model/User')
+const Following = use('App/Model/Follower')
 
 class UserController {
 
@@ -92,6 +93,7 @@ class UserController {
     yield request.auth.logout()
     response.redirect('/')
   }
+
 
 }
 

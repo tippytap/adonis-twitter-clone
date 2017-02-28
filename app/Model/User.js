@@ -35,7 +35,7 @@ class User extends Lucid {
   }
 
   followers(){
-    return this.hasMany('App/Model/Following')
+    return this.hasMany('App/Model/Follower')
   }
 
 }

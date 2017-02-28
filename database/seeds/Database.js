@@ -16,7 +16,7 @@ const Factory = use('Factory')
 
 const User = use('App/Model/User')
 const Tweet = use('App/Model/Tweet')
-const Following = use('App/Model/Following')
+const Following = use('App/Model/Follower')
 
 class DatabaseSeeder {
 
@@ -27,6 +27,10 @@ class DatabaseSeeder {
       for(let i = 0; i < 20; i++){
         const tweets = Factory.model('App/Model/Tweet').make()
         yield user.tweets().save(tweets)
+      }
+      for(let i = 0; i < 6; i++){
+        const follower = Factory.model('App/Model/Follower').make()
+        yield user.followers().save(follower)
       }
     })
   }

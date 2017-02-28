@@ -38,16 +38,10 @@ Factory.blueprint('App/Model/Tweet', (fake) => {
   }
 })
 
-Factory.blueprint('App/Model/Following', (fake) => {
-  let userIds = [1, 2, 3, 4, 5, 6]
-  let user_follower = fake.pickone(userIds)
-  let i = userIds.indexOf(user_follower)
-  userIds.splice(i, 1)
-  let user_followed = fake.pickone(userIds);
+Factory.blueprint('App/Model/Follower', (fake) => {
 
   return{
-    user_followed: user_followed,
-    user_follower: user_follower,
+    follower: fake.integer({min: 1, max: 6}),
     is_following: true
   }
 })

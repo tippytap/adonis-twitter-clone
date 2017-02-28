@@ -2,7 +2,7 @@
 
 const Lucid = use('Lucid')
 
-class Following extends Lucid {
+class Follower extends Lucid {
 
   static boot () {
     super.boot()
@@ -14,4 +14,4 @@ class Following extends Lucid {
 
 }
 
-module.exports = Following
+module.exports = Follower
