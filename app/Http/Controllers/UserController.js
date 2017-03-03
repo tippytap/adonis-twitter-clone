@@ -3,6 +3,7 @@
 const Validator = use('Validator')
 const User = use('App/Model/User')
 const Follower = use('App/Model/Follower')
+const Tweet = use('App/Model/Tweet')
 
 class UserController {
 
@@ -46,9 +47,15 @@ class UserController {
 
   * home(request, response){
     const user = yield request.auth.getUser()
-    const following = yield Follower.query().where('follower', user.id).fetch()
-    let followingUsers = [];
-    yield response.sendView('userIndex', { 'user': user.toJSON(), 'following': following.toJSON()})
+    const following = yield Follower.query().where('follower', user.id)
+    const allTweets = []
+    for(let i in following){
+      let follower = following[i]
+      let tweets = yield Tweet.query().where('user_id', follower.user_id)
+
+    }
+    console.log(tweets)
+    yield response.sendView('userIndex', { 'user': user.toJSON() })
   }
 
   /**
