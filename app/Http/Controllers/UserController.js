@@ -45,6 +45,9 @@ class UserController {
 
   }
 
+  /**
+  * Grabs the currently logged in user and all their
+  * */
   * home(request, response){
     const user = yield request.auth.getUser()
     const following = yield Follower.query().where('follower', user.id)
@@ -52,25 +55,49 @@ class UserController {
     for(let i in following){
       let follower = following[i]
       let tweets = yield Tweet.query().where('user_id', follower.user_id)
-
+      for(let j in tweets){
+        let user = yield User.find(tweets[j].user_id)
+        tweets[j].username = user.username
+        allTweets.push(tweets[j])
+      }
     }
-    console.log(tweets)
-    yield response.sendView('userIndex', { 'user': user.toJSON() })
+    yield response.sendView('userIndex', { 'user': user.toJSON(), 'tweets': allTweets })
   }
 
   /**
    * User profile
    * */
-  * show(request, response) {
-    //
+  * profile(request, response){
+    const user = yield User.find(request.param('id'))
+    let tweets = yield Tweet.query().where('user_id', user.id)
+    if(tweets.length > 0){
+      for(let j in tweets){
+        tweets[j].username = user.username
+      }
+    }
+    else
+      tweets = { message: "No tweets yet!" }
+
+    yield response.sendView('user/profile', { 'user': user.toJSON(), 'tweets': tweets })
   }
 
+  /**
+   * Shows a given user profile
+   * */
+  * show(request, response) {
+
+  }
+
+  /**
+   * After being shown, edit user account information
+   * */
   * edit(request, response) {
-    //
+    const user = yield request.auth.getUser()
+    yield response.sendView('user/edit', { 'user': user.toJSON() })
   }
 
   * update(request, response) {
-    //
+
   }
 
   * destroy(request, response) {

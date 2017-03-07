@@ -1,7 +1,52 @@
 {% extends 'master' %}
 
 {% block content %}
-  <h1>{{ user.username }}</h1>
-
+  <br/>
+  <section id="UserHome" class="row" data-sticky-container>
+    <div id="user" class="small-12 medium-4 columns sticky"
+         data-sticky
+         data-margin-top="0"
+    >
+      <div>
+        <h3>
+          <a href="/profile/{{ user.id }}">{{ user.firstname + " " + user.lastname }}</a>
+          <a href="/profile/{{ user.id }}"><small>&commat; {{ user.username }}</small></a>
+        </h3>
+        <div class="">
+          <div class="row">
+            <p class="column small-4"><small>TWEETS</small></p>
+            <p class="column small-4"><small>FOLLOWERS</small></p>
+            <p class="column small-4"><small>FOLLOWING</small></p>
+          </div>
+          <div class="row">
+            <p class="column small-4">800</p>
+            <p class="column small-4">800</p>
+            <p class="column small-4">800</p>
+          </div>
+        </div>
+      </div>
+      {#<nav>#}
+        {#<a class="small-4 column hollow button" href="/profile/{{ user.id }}">My Profile</a>#}
+        {#<a class="small-4 column hollow button" href="users/{{ user.id }}/settings">Settings</a>#}
+        {#<a class="small-4 column hollow button" href="/logout">Logout</a>#}
+      {#</nav>#}
+    </div>
+      <div id="tweets" class="small-12 medium-8 columns">
+      {% for tweet in tweets %}
+        <article>
+          <p><a href="/profile/{{ tweet.user_id }}">{{ tweet.username }}</a>
+            <small>{{ tweet.created_at }}</small>
+            {% if tweet.created_at != tweet.updated_at %}
+              <small> Edited</small>
+            {% endif %}
+          </p>
+          <p>
+            {{ tweet.content }}
+          </p>
+          <hr/>
+        </article>
+      {% endfor %}
+      </div>
+  </section>
 
 {% endblock %}

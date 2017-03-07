@@ -1,0 +1,32 @@
+{% extends 'master' %}
+
+{% block content %}
+  <br/>
+  <section id="UserProfile" class="row">
+
+    <div id="user" class="small-12 medium-4 columns">
+      <div>
+        {{ form.open({ action: 'UserController.update', params: {id: user.id} }) }}
+          {{ csrfField }}
+
+          {{ form.label('firstname', 'First Name') }}
+          {{ form.text('firstname', user.firstname) }}
+
+          {{ form.label('lastname', 'Last Name') }}
+          {{ form.text('lastname', user.lastname) }}
+
+          {{ form.label('email', 'Email Address') }}
+          {{ form.text('email', user.email) }}
+
+        {{ form.close() }}
+      </div>
+      <nav class="">
+        <a class="small-6 column hollow button secondary" href="/profile/{{ user.id }}">Cancel</a>
+        <a class="small-6 column button success" href="#">Save Changes</a>
+        <a class="small-12 column hollow button alert" href="#">Deactivate Account</a>
+      </nav>
+    </div>
+
+  </section>
+
+{% endblock %}
