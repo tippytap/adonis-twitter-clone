@@ -46,7 +46,7 @@ Route.group('users', () => {
   Route.get('/home', 'UserController.home').as('home').middleware('auth')
 
   Route.get('/account/:id', 'UserController.account').middleware('auth')
-  Route.post('/account/:id', 'UserController.account').middleware('auth')
+  Route.post('/account/:id', 'UserController.updateAccount').middleware('auth')
 
   Route.get('/deactivate', 'UserController.deactivate')
   Route.post('/deactivate', 'UserController.deactivate')

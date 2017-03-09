@@ -73,15 +73,26 @@ class UserController {
 
   * updateAccount(request, response){
 
-    if(user.email !== userInputs.email){
-      const validation = yield Validator.validate(userInputs, User.updateRules)
-      if(validation.fails()){
-        yield request.withAll().andWith({errors: validation.messages()}).flash()
+    const user = request.auth.getUser()
+
+    const userInputs = request.all()
+
+    const validationEmail = yield Validator.validate(userInputs, User.updateEmailRules)
+    const validationUsername = yield Validator.validate(userInputs, User.updateUsernameRules)
+
+
+    if(user.email !== userInputs.email) {
+      if (validationUsername.fails() || validationEmail.fails()) {
+        let messages = []
+        yield request.withAll().andWith({errors: messages}).flash()
         response.redirect('back')
       }
+      user.username = userInputs.username
       user.email = userInputs.email
+      yield request.withAll().andWith({ messages: ["Account details updated!"] }).flash()
     }
 
+    response.redirect('back')
   }
 
   * deactivate(request, response){
@@ -111,6 +122,7 @@ class UserController {
       tweet.dateStr = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear()
       allTweets.push(tweet)
     }
+
     for(let i in following){
       let follower = following[i]
       let tweets = yield Tweet.query().where('user_id', follower.user_id).fetch()
@@ -149,12 +161,10 @@ class UserController {
       else
         user.isFollowed = false;
     }
-    //let tweets = yield Tweet.query().where('user_id', user.id).fetch()
+
     let tweets = yield user.tweets().fetch()
-    // console.log(tweets.value())
     if(tweets.value().length > 0){
       for(let j in tweets.value()){
-        // tweets[j].username = user.username
         let tweet = tweets.value()[j]
         let date = tweet.getDate()
         tweet.username = user.username

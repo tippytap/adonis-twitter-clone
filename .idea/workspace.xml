@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="45bb40d8-75d3-4a18-bd40-eb1bb553aa5e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.js" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/development.sqlite" afterPath="$PROJECT_DIR$/database/development.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/master.njk" afterPath="$PROJECT_DIR$/resources/views/master.njk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/deactivate.njk" afterPath="$PROJECT_DIR$/resources/views/user/deactivate.njk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/profile.njk" afterPath="$PROJECT_DIR$/resources/views/user/profile.njk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.js" afterPath="$PROJECT_DIR$/app/Http/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Model/User.js" afterPath="$PROJECT_DIR$/app/Model/User.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/account.njk" afterPath="$PROJECT_DIR$/resources/views/user/account.njk" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,17 +29,17 @@
       <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="47" column="1" lean-forward="false" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+            <state relative-caret-position="452">
+              <caret line="48" column="51" lean-forward="false" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.njk" pinned="false" current-in-tab="true">
+      <file leaf-file-name="profile.njk" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/profile.njk">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
+            <state relative-caret-position="915">
               <caret line="61" column="36" lean-forward="false" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
               <folding>
                 <element signature="e#414#422#0#HTML" expanded="true" />
@@ -63,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="166" column="93" lean-forward="false" selection-start-line="166" selection-start-column="93" selection-end-line="166" selection-end-column="93" />
+            <state relative-caret-position="330">
+              <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -76,18 +75,8 @@
       <file leaf-file-name="account.njk" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/account.njk">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="65" lean-forward="false" selection-start-line="22" selection-start-column="65" selection-end-line="22" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="master.njk" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/master.njk">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="68" lean-forward="false" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
+            <state relative-caret-position="225">
+              <caret line="15" column="45" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -103,21 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.njk" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/edit.njk">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="97" lean-forward="false" selection-start-line="18" selection-start-column="97" selection-end-line="18" selection-end-column="97" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="User.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Model/User.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+            <state relative-caret-position="360">
+              <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -151,13 +130,13 @@
         <option value="$PROJECT_DIR$/database/migrations/1485959844267_create_users_table.js" />
         <option value="$PROJECT_DIR$/resources/views/user/edit.njk" />
         <option value="$PROJECT_DIR$/resources/views/userIndex.njk" />
-        <option value="$PROJECT_DIR$/app/Http/routes.js" />
-        <option value="$PROJECT_DIR$/app/Model/User.js" />
-        <option value="$PROJECT_DIR$/resources/views/user/account.njk" />
         <option value="$PROJECT_DIR$/resources/views/user/deactivate.njk" />
         <option value="$PROJECT_DIR$/resources/views/master.njk" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.js" />
         <option value="$PROJECT_DIR$/resources/views/user/profile.njk" />
+        <option value="$PROJECT_DIR$/app/Model/User.js" />
+        <option value="$PROJECT_DIR$/resources/views/user/account.njk" />
+        <option value="$PROJECT_DIR$/app/Http/routes.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.js" />
       </list>
     </option>
   </component>
@@ -456,7 +435,7 @@
       <workItem from="1488550041758" duration="2387000" />
       <workItem from="1488567243300" duration="261000" />
       <workItem from="1488896804702" duration="96000" />
-      <workItem from="1488896991544" duration="28872000" />
+      <workItem from="1488896991544" duration="31030000" />
     </task>
     <task id="LOCAL-00001" summary="added some routes and controllers and migrations for users and tweets">
       <created>1485971125780</created>
@@ -469,7 +448,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92637000" />
+    <option name="totallyTimeSpent" value="94795000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -813,14 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/User.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/edit.njk">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -829,10 +800,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/master.njk">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="47" column="1" lean-forward="false" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+        <state relative-caret-position="315">
+          <caret line="21" column="68" lean-forward="false" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/profile.njk">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="61" column="36" lean-forward="false" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
+          <folding>
+            <element signature="e#414#422#0#HTML" expanded="true" />
+            <element signature="e#442#448#0#HTML" expanded="true" />
+            <element signature="e#448#454#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/User.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -845,18 +836,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/account.njk">
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="65" lean-forward="false" selection-start-line="22" selection-start-column="65" selection-end-line="22" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/master.njk">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="68" lean-forward="false" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
+        <state relative-caret-position="452">
+          <caret line="48" column="51" lean-forward="false" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -871,23 +854,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/user/account.njk">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="166" column="93" lean-forward="false" selection-start-line="166" selection-start-column="93" selection-end-line="166" selection-end-column="93" />
+        <state relative-caret-position="225">
+          <caret line="15" column="45" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/profile.njk">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="61" column="36" lean-forward="false" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
-          <folding>
-            <element signature="e#414#422#0#HTML" expanded="true" />
-            <element signature="e#442#448#0#HTML" expanded="true" />
-            <element signature="e#448#454#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="330">
+          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

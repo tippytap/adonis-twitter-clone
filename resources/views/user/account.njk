@@ -6,7 +6,7 @@
 
     <div id="user" class="small-12 medium-4 columns">
       <div>
-        {{ form.open({ action: 'UserController.account', params: {id: user.id} }) }}
+        {{ form.open({ action: 'UserController.updateAccount', params: {id: user.id} }) }}
           {{ csrfField }}
 
           {{ form.label('username', 'Username') }}
