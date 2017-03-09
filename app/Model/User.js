@@ -14,9 +14,10 @@ class User extends Lucid {
     }
   }
 
-  static get updateRules(){
+  static get updateAccountRules(){
     return {
-      email: "email|unique:users"
+      email: "email|unique:users",
+      username: "unique:users"
     }
   }
 

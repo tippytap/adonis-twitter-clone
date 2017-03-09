@@ -1,0 +1,9 @@
+<div class="reveal" data-reveal id="modal-deactivate">
+  <h5>Are you sure?</h5>
+  <p>You can always come back later, but we hate to see you go.</p>
+  {{ form.open({action: 'UserController.deactivate'}) }}
+  {{ csrfField }}
+  {{ form.submit('Deactivate my account', '', {class: 'button hollow alert'}) }}
+  {{ form.close() }}
+  <button class="close-button button hollow" data-close aria-label="Close Modal" type="button">Cancel</button>
+</div>

@@ -1,0 +1,31 @@
+{% extends 'master' %}
+
+{% block content %}
+  <br/>
+  <section id="UserProfile" class="row">
+
+    <div id="user" class="small-12 medium-4 columns">
+      <div>
+        {{ form.open({ action: 'UserController.account', params: {id: user.id} }) }}
+          {{ csrfField }}
+
+          {{ form.label('username', 'Username') }}
+          {{ form.text('username', user.username) }}
+
+          {{ form.label('email', 'Email address') }}
+          {{ form.text('email', user.email) }}
+
+      </div>
+      <nav class="">
+        <a class="small-6 column hollow button secondary" href="/profile/{{ user.id }}">Cancel</a>
+        {{ form.submit('Save Changes', '', {class: 'button column small-6 success'}) }}
+        {{ form.close() }}
+        <button class="small-12 column hollow button alert" data-open="modal-deactivate">Deactivate my account</button>
+      </nav>
+    </div>
+
+  </section>
+
+  {% include 'user/deactivate' %}
+
+{% endblock %}

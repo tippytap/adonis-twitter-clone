@@ -15,8 +15,8 @@
           {{ form.label('lastname', 'Last Name') }}
           {{ form.text('lastname', user.lastname) }}
 
-          {{ form.label('email', 'Email Address') }}
-          {{ form.text('email', user.email) }}
+          {{ form.label('description', 'About me') }}
+          {{ form.textarea('description', user.description, {placeholder: "Tell us about yourself!"}) }}
 
       </div>
       <nav class="">

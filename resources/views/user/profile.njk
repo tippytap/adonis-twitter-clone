@@ -22,7 +22,7 @@
                     <a href="#">+</a>
                     <ul class="menu">
                       <li><a href="/users/{{ user.id }}/edit">Edit Profile</a></li>
-                      <li><a href="/profile/{{ user.id }}">Account Settings</a></li>
+                      <li><a href="/account/{{ user.id }}">Account Settings</a></li>
                       <li><a href="/logout">Log out</a></li>
                     </ul>
                   </li>
@@ -44,6 +44,11 @@
             <p class="column small-4">{{ user.followers_count }}</p>
             <p class="column small-4">{{ user.following_count }}</p>
           </div>
+        </div>
+        <div>
+          <p>
+            {{ user.description }}
+          </p>
         </div>
       </div>
     </div>

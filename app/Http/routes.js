@@ -44,6 +44,13 @@ Route.group('users', () => {
   Route.post('users/store', 'UserController.store')
   Route.post('users/makeFollower', 'UserController.makeFollower')
   Route.get('/home', 'UserController.home').as('home').middleware('auth')
+
+  Route.get('/account/:id', 'UserController.account').middleware('auth')
+  Route.post('/account/:id', 'UserController.account').middleware('auth')
+
+  Route.get('/deactivate', 'UserController.deactivate')
+  Route.post('/deactivate', 'UserController.deactivate')
+
   Route.post('/login', 'UserController.login')
   Route.get('/logout', 'UserController.logout')
 })

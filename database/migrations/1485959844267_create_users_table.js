@@ -11,6 +11,8 @@ class UsersTableSchema extends Schema {
       table.string('firstname', 254)
       table.string('lastname', 254)
       table.string('profile_img_path')
+      table.string('description', 254)
+      table.boolean('is_active')
       table.string('email', 254).notNullable().unique()
       table.string('password', 60).notNullable()
       table.timestamps()

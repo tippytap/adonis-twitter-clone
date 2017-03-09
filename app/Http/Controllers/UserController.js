@@ -33,6 +33,7 @@ class UserController {
     user.email = userInputs.email
     user.firstname = userInputs.firstname
     user.lastname = userInputs.lastname
+    user.is_active = true
 
     // save the new user to the database, but we have to make sure to yield it
     // because this is a generator function and it won't do anything otherwise
@@ -52,17 +53,18 @@ class UserController {
   * update(request, response) {
     const user = yield User.find(request.param('id'))
     const userInputs = yield request.all()
-    if(user.email !== userInputs.email){
-      const validation = yield Validator.validate(userInputs, User.updateRules)
-      if(validation.fails()){
-        yield request.withAll().andWith({errors: validation.messages()}).flash()
-        response.redirect('back')
-      }
-      user.email = userInputs.email
-    }
+    // if(user.email !== userInputs.email){
+    //   const validation = yield Validator.validate(userInputs, User.updateRules)
+    //   if(validation.fails()){
+    //     yield request.withAll().andWith({errors: validation.messages()}).flash()
+    //     response.redirect('back')
+    //   }
+    //   user.email = userInputs.email
+    // }
 
     user.firstname = userInputs.firstname
     user.lastname = userInputs.lastname
+    user.description = userInputs.description
 
     yield user.save()
 
@@ -70,6 +72,15 @@ class UserController {
 
     response.redirect("back")
 
+  }
+
+  * account(request, response){
+    const user = yield User.find(request.param('id'))
+    yield response.sendView('user/account', {'user': user.toJSON()})
+  }
+
+  * deactivate(request, response){
+    const user = request.auth.getUser()
   }
 
   /**
