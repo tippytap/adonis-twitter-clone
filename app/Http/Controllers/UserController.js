@@ -52,6 +52,13 @@ class UserController {
     const user = yield request.auth.getUser()
     const following = yield Follower.query().where('follower', user.id)
     const allTweets = []
+    // allTweets.push(user.tweets().fetch().value())
+    let myTweets = yield user.tweets().fetch()
+    for(let i in myTweets.value()){
+      let tweet = myTweets.value()[i]
+      tweet.username = user.username
+      allTweets.push(tweet)
+    }
     for(let i in following){
       let follower = following[i]
       let tweets = yield Tweet.query().where('user_id', follower.user_id)
@@ -69,6 +76,15 @@ class UserController {
    * */
   * profile(request, response){
     const user = yield User.find(request.param('id'))
+    const loggedInUser = yield request.auth.getUser()
+    let userFollowers = yield user.followers().fetch()
+    for(let i in userFollowers.value()){
+      let follower = userFollowers.value()[i]
+      if(follower.id === loggedInUser.id)
+        user.isFollowed = true;
+      else
+        user.isFollowed = false;
+    }
     let tweets = yield Tweet.query().where('user_id', user.id)
     if(tweets.length > 0){
       for(let j in tweets){

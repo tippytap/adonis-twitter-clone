@@ -9,11 +9,30 @@
          data-margin-top="0"
     >
       <div>
-        <h3>
-          {{ user.firstname + " " + user.lastname }}
-          <small>&commat; {{ user.username }}</small>
-          <button><i class="fi-list"></i></button>
-        </h3>
+        <div class="clearfix">
+            <h3 class="float-left">
+              {{ user.firstname + " " + user.lastname }}
+              <small>
+                &commat; {{ user.username }}&nbsp;&nbsp;
+              </small>
+            </h3>
+            {% if currentUser.id == user.id %}
+                <ul class="dropdown menu" data-dropdown-menu>
+                  <li>
+                    <a href="#">+</a>
+                    <ul class="menu">
+                      <li><a href="/users/{{ user.id }}/edit">Edit Profile</a></li>
+                      <li><a href="/profile/{{ user.id }}">Account Settings</a></li>
+                      <li><a href="/logout">Log out</a></li>
+                    </ul>
+                  </li>
+                </ul>
+            {% elif user.isFollowed %}
+              <a class="button tiny hollow " href="#">Following</a>
+            {% else %}
+              <a href="#" class="button tiny">Follow</a>
+            {% endif %}
+        </div>
         <div class="">
           <div class="row">
             <p class="column small-4"><small>TWEETS</small></p>

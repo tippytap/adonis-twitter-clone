@@ -1,5 +1,7 @@
 'use strict'
 
+const Tweet = use('App/Model/Tweet')
+
 class TweetController {
 
   * index(request, response) {
@@ -11,7 +13,12 @@ class TweetController {
   }
 
   * store(request, response) {
-    //
+    const tweet = new Tweet()
+    const user = yield request.auth.getUser()
+    tweet.user_id = user.id
+    tweet.content = request.input('newTweet')
+    yield tweet.save()
+    response.redirect('back')
   }
 
   * show(request, response) {
