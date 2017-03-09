@@ -13,6 +13,12 @@ class User extends Lucid {
     }
   }
 
+  static get updateRules(){
+    return {
+      email: "email|unique:users"
+    }
+  }
+
   static boot () {
     super.boot()
 

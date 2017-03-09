@@ -46,13 +46,38 @@ class UserController {
   }
 
   /**
+   * Updates a user record
+   * */
+  * update(request, response) {
+    const user = yield User.find(request.param('id'))
+    const userInputs = yield request.all()
+    if(user.email !== userInputs.email){
+      const validation = yield Validator.validate(userInputs, User.updateRules)
+      if(validation.fails()){
+        yield request.withAll().andWith({errors: validation.messages()}).flash()
+        response.redirect('back')
+      }
+      user.email = userInputs.email
+    }
+
+    user.firstname = userInputs.firstname
+    user.lastname = userInputs.lastname
+
+    yield user.save()
+
+    yield request.withAll().andWith({ messages: ["Profile updated!"] }).flash()
+
+    response.redirect("back")
+
+  }
+
+  /**
   * Grabs the currently logged in user and all their
   * */
   * home(request, response){
     const user = yield request.auth.getUser()
     const following = yield Follower.query().where('follower', user.id)
     const allTweets = []
-    // allTweets.push(user.tweets().fetch().value())
     let myTweets = yield user.tweets().fetch()
     for(let i in myTweets.value()){
       let tweet = myTweets.value()[i]
@@ -112,9 +137,6 @@ class UserController {
     yield response.sendView('user/edit', { 'user': user.toJSON() })
   }
 
-  * update(request, response) {
-
-  }
 
   * destroy(request, response) {
     //

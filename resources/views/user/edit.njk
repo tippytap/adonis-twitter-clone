@@ -18,13 +18,12 @@
           {{ form.label('email', 'Email Address') }}
           {{ form.text('email', user.email) }}
 
-        {{ form.close() }}
       </div>
       <nav class="">
         <a class="small-6 column hollow button secondary" href="/profile/{{ user.id }}">Cancel</a>
-        <a class="small-6 column button success" href="#">Save Changes</a>
-        <a class="small-12 column hollow button alert" href="#">Deactivate Account</a>
+        {{ form.submit('Save Changes', '', {class: 'button column small-6 success'}) }}
       </nav>
+      {{ form.close() }}
     </div>
 
   </section>
