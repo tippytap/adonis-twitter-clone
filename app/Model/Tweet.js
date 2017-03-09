@@ -11,6 +11,10 @@ class Tweet extends Lucid {
   user(){
     return this.belongsTo('App/Model/User')
   }
+
+  getDate(){
+    return new Date(this.created_at)
+  }
 }
 
 module.exports = Tweet

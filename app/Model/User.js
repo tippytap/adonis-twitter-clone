@@ -2,6 +2,7 @@
 
 const Lucid = use('Lucid')
 const Hash = use('Hash')
+const Follower = use('App/Model/Follower')
 
 class User extends Lucid {
 

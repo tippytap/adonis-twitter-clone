@@ -40,16 +40,11 @@
             <p class="column small-4"><small>FOLLOWING</small></p>
           </div>
           <div class="row">
-            <p class="column small-4">800</p>
-            <p class="column small-4">800</p>
-            <p class="column small-4">800</p>
+            <p class="column small-4">{{ user.tweets_count }}</p>
+            <p class="column small-4">{{ user.followers_count }}</p>
+            <p class="column small-4">{{ user.following_count }}</p>
           </div>
         </div>
-        {#{% if currentUser.id == user.id %}#}
-          {#<nav>#}
-            {#<a class="small-12 column hollow button" href="/users/{{ user.id }}/edit">Edit profile</a>#}
-          {#</nav>#}
-        {#{% endif %}#}
       </div>
     </div>
     <div id="tweets" class="small-12 medium-8 columns">

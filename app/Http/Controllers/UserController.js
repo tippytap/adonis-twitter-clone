@@ -4,6 +4,7 @@ const Validator = use('Validator')
 const User = use('App/Model/User')
 const Follower = use('App/Model/Follower')
 const Tweet = use('App/Model/Tweet')
+const Database = use('Database')
 
 class UserController {
 
@@ -75,24 +76,38 @@ class UserController {
   * Grabs the currently logged in user and all their
   * */
   * home(request, response){
-    const user = yield request.auth.getUser()
+    let userId = yield request.auth.getUser()
+    userId = userId.id
+    const user = yield User.query().where('id', userId).withCount('followers').first()
+
+    let tweetCount = yield Database.from('tweets').whereRaw('user_id = ?', [user.id])
+    user.tweets_count = tweetCount.length
+
     const following = yield Follower.query().where('follower', user.id)
+    user.following_count = following.length
+
     const allTweets = []
     let myTweets = yield user.tweets().fetch()
     for(let i in myTweets.value()){
       let tweet = myTweets.value()[i]
+      let date = tweet.getDate()
       tweet.username = user.username
+      tweet.dateStr = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear()
       allTweets.push(tweet)
     }
     for(let i in following){
       let follower = following[i]
-      let tweets = yield Tweet.query().where('user_id', follower.user_id)
-      for(let j in tweets){
-        let user = yield User.find(tweets[j].user_id)
-        tweets[j].username = user.username
-        allTweets.push(tweets[j])
+      let tweets = yield Tweet.query().where('user_id', follower.user_id).fetch()
+      for(let j in tweets.value()){
+        let tweet = tweets.value()[i]
+        let user = yield User.find(tweet.user_id)
+        let date = tweet.getDate()
+        tweet.username = user.username
+        tweet.dateStr = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear()
+        allTweets.push(tweet)
       }
     }
+
     yield response.sendView('userIndex', { 'user': user.toJSON(), 'tweets': allTweets })
   }
 
@@ -100,7 +115,15 @@ class UserController {
    * User profile
    * */
   * profile(request, response){
-    const user = yield User.find(request.param('id'))
+    let userId = yield User.find(request.param('id'))
+    const user = yield User.query().where('id', userId.id).withCount('followers').first()
+
+    let tweetCount = yield Database.from('tweets').whereRaw('user_id = ?', [user.id])
+    user.tweets_count = tweetCount.length
+
+    const following = yield Follower.query().where('follower', user.id)
+    user.following_count = following.length
+
     const loggedInUser = yield request.auth.getUser()
     let userFollowers = yield user.followers().fetch()
     for(let i in userFollowers.value()){
