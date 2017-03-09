@@ -53,14 +53,6 @@ class UserController {
   * update(request, response) {
     const user = yield User.find(request.param('id'))
     const userInputs = yield request.all()
-    // if(user.email !== userInputs.email){
-    //   const validation = yield Validator.validate(userInputs, User.updateRules)
-    //   if(validation.fails()){
-    //     yield request.withAll().andWith({errors: validation.messages()}).flash()
-    //     response.redirect('back')
-    //   }
-    //   user.email = userInputs.email
-    // }
 
     user.firstname = userInputs.firstname
     user.lastname = userInputs.lastname
@@ -77,6 +69,19 @@ class UserController {
   * account(request, response){
     const user = yield User.find(request.param('id'))
     yield response.sendView('user/account', {'user': user.toJSON()})
+  }
+
+  * updateAccount(request, response){
+
+    if(user.email !== userInputs.email){
+      const validation = yield Validator.validate(userInputs, User.updateRules)
+      if(validation.fails()){
+        yield request.withAll().andWith({errors: validation.messages()}).flash()
+        response.redirect('back')
+      }
+      user.email = userInputs.email
+    }
+
   }
 
   * deactivate(request, response){
@@ -144,16 +149,22 @@ class UserController {
       else
         user.isFollowed = false;
     }
-    let tweets = yield Tweet.query().where('user_id', user.id)
-    if(tweets.length > 0){
-      for(let j in tweets){
-        tweets[j].username = user.username
+    //let tweets = yield Tweet.query().where('user_id', user.id).fetch()
+    let tweets = yield user.tweets().fetch()
+    // console.log(tweets.value())
+    if(tweets.value().length > 0){
+      for(let j in tweets.value()){
+        // tweets[j].username = user.username
+        let tweet = tweets.value()[j]
+        let date = tweet.getDate()
+        tweet.username = user.username
+        tweet.dateStr = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear()
       }
     }
     else
       tweets = { message: "No tweets yet!" }
 
-    yield response.sendView('user/profile', { 'user': user.toJSON(), 'tweets': tweets })
+    yield response.sendView('user/profile', { 'user': user.toJSON(), 'tweets': tweets.toJSON() })
   }
 
   /**

@@ -59,7 +59,7 @@
         {% for tweet in tweets %}
           <article>
             <p><a href="#">{{ tweet.username }}</a>
-              <small>{{ tweet.created_at }}</small>
+              <small>{{ tweet.dateStr }}</small>
               {% if tweet.created_at != tweet.updated_at %}
                 <small> Edited</small>
               {% endif %}

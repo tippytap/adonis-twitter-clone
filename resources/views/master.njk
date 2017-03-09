@@ -16,21 +16,26 @@
 
   <header class="row">
     <nav class="">
-      <h3 class="small-3 columns"><a href="/">Twittah</a></h3>
-      <ul class="menu small-9 columns">
-        {% if currentUser %}
-          <li>
-            <a href="/home">Home</a>
-          </li>
-          <li>
-            <a href="/logout">Log out</a>
-          </li>
+      <h3 id="logo" class="small-3 columns">
+        <a href="/">
+          Twittah
+          <small><span id="homeIcon" class="hide">Home</span></small>
+        </a>
+      </h3>
+      {#<ul class="menu small-9 columns">#}
+        {#{% if currentUser %}#}
+          {#<li>#}
+            {#<a href="/home">Home</a>#}
+          {#</li>#}
+          {#<li>#}
+            {#<a href="/logout">Log out</a>#}
+          {#</li>#}
         {#{% else %}#}
           {#<li>#}
             {#<a href="/register">Register</a>#}
           {#</li>#}
-        {% endif %}
-      </ul>
+        {#{% endif %}#}
+      {#</ul>#}
     </nav>
   </header>
 
@@ -66,21 +71,27 @@
   </section>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js"></script>
-{#<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/plugins/foundation.core.min.js"></script>#}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/plugins/foundation.sticky.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/plugins/foundation.util.triggers.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/plugins/foundation.util.mediaQuery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/plugins/foundation.util.keyboard.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/plugins/foundation.util.box.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/plugins/foundation.util.triggers.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/plugins/foundation.util.motion.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/plugins/foundation.reveal.min.js"></script>
+  {#<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/plugins/foundation.core.min.js"></script>#}
 
 <script type="text/javascript">
+  var modal = new Foundation.Reveal($('.reveal'));
   var elem = new Foundation.Sticky($('.sticky'));
-  var modal = new Foundation.Reveal($('.reveal'))
   $(document).foundation();
+  $('#logo').hover(function(){
+      if($('#homeIcon').hasClass('hide')){
+          $('#homeIcon').removeClass('hide');
+      }
+      else
+          $('#homeIcon').addClass('hide');
+  });
 </script>
 
 </body>
