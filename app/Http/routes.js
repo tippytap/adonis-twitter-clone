@@ -35,11 +35,12 @@ Route.get('/login').render('login')
 // TWEET GROUP
 Route.group('tweets', () => {
   Route.resource('tweet', 'TweetController')
+  Route.get('getTweet/:id', 'TweetController.getTweet')
 }).middleware('auth')
 
 // USER GROUP
 Route.group('users', () => {
-  Route.resource('users', 'UserController').except('store', 'index').middleware('auth')
+  Route.resource('user', 'UserController').except('store', 'index').middleware('auth')
   Route.get('/profile/:id', 'UserController.profile')
   Route.post('users/store', 'UserController.store')
   Route.post('users/makeFollower', 'UserController.makeFollower')

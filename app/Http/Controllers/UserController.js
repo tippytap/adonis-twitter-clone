@@ -127,7 +127,7 @@ class UserController {
       let follower = following[i]
       let tweets = yield Tweet.query().where('user_id', follower.user_id).fetch()
       for(let j in tweets.value()){
-        let tweet = tweets.value()[i]
+        let tweet = tweets.value()[j]
         let user = yield User.find(tweet.user_id)
         let date = tweet.getDate()
         tweet.username = user.username

@@ -1,6 +1,7 @@
 'use strict'
 
 const Tweet = use('App/Model/Tweet')
+const User = use('App/Model/User')
 
 class TweetController {
 
@@ -35,6 +36,17 @@ class TweetController {
 
   * destroy(request, response) {
     //
+  }
+
+  * getTweet(request, response){
+    const tweet = yield Tweet.find(request.param('id'))
+    const author = yield User.find(tweet.attributes.user_id)
+    const loggedInUser = yield request.auth.getUser()
+    if(loggedInUser.id === author.id)
+      tweet.attributes.author = true;
+    tweet.attributes.username = author.username
+    tweet.attributes.name = author.firstname + " " + author.lastname
+    response.send(tweet.toJSON())
   }
 
 }

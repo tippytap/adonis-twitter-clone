@@ -1,0 +1,42 @@
+
+{% for tweet in tweets %}
+  <article data-open="modal-tweet" class="tweet" id="{{ tweet.id }}">
+    <p><a href="/profile/{{ tweet.user_id }}">{{ tweet.username }}</a>
+      <small>{{ tweet.dateStr }}</small>
+      {% if tweet.created_at != tweet.updated_at %}
+        <small> Edited</small>
+      {% endif %}
+    </p>
+    <p>
+      {{ tweet.content }}
+    </p>
+    <hr/>
+  </article>
+{% endfor %}
+
+<div class="reveal" data-reveal id="modal-tweet">
+
+  <button id="tweet-edit-btn" class="button hollow hide">edit</button>
+  <h5 id="tweet-user"><small>&commat; <span id="tweet-name"></span></small></h5>
+  <p id="tweet-content"></p>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<script type="text/javascript">
+  var $modal = $('#modal-tweet');
+  $('.tweet').click(function(e){
+    var route = "/getTweet/" + $(this).attr('id');
+    $.ajax(route).done(function(r){
+        if(r.author){
+            $modal.find('#tweet-edit-btn').removeClass('hide');
+        }
+        else{
+            $modal.find('#tweet-edit-btn').addClass('hide');
+        }
+      $modal.find('#tweet-user').html(r.username);
+      $modal.find('#tweet-content').html(r.content);
+    });
+  });
+</script>
