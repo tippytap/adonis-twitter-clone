@@ -46,6 +46,8 @@ Route.group('users', () => {
   Route.post('users/makeFollower', 'UserController.makeFollower')
   Route.get('/home', 'UserController.home').as('home').middleware('auth')
 
+  Route.post('/search', 'UserController.search')
+
   Route.get('/account/:id', 'UserController.account').middleware('auth')
   Route.post('/account/:id', 'UserController.updateAccount').middleware('auth')
 

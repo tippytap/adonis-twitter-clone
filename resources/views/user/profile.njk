@@ -56,20 +56,21 @@
       {% if tweets.message %}
         <article>{{ tweets.message }}</article>
       {% else %}
-        {% for tweet in tweets %}
-          <article>
-            <p><a href="#">{{ tweet.username }}</a>
-              <small>{{ tweet.dateStr }}</small>
-              {% if tweet.created_at != tweet.updated_at %}
-                <small> Edited</small>
-              {% endif %}
-            </p>
-            <p>
-              {{ tweet.content }}
-            </p>
-            <hr/>
-          </article>
-        {% endfor %}
+        {% include 'tweets/tweetList' %}
+        {#{% for tweet in tweets %}#}
+          {#<article>#}
+            {#<p><a href="#">{{ tweet.username }}</a>#}
+              {#<small>{{ tweet.dateStr }}</small>#}
+              {#{% if tweet.created_at != tweet.updated_at %}#}
+                {#<small> Edited</small>#}
+              {#{% endif %}#}
+            {#</p>#}
+            {#<p>#}
+              {#{{ tweet.content }}#}
+            {#</p>#}
+            {#<hr/>#}
+          {#</article>#}
+        {#{% endfor %}#}
       {% endif %}
     </div>
   </section>

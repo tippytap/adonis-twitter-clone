@@ -223,6 +223,12 @@ class UserController {
     response.redirect('/')
   }
 
+  * search(request, response){
+    let searchTerm = "%${" + request.input('search') + "}%";
+    let users = User.query().where('username', 'like', searchTerm)
+    response.send(users)
+  }
+
 
 }
 

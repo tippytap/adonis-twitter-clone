@@ -15,17 +15,20 @@
 {% endfor %}
 
 <div class="reveal" data-reveal id="modal-tweet">
-  <button id="tweet-edit-btn" class="button hollow hide">edit</button>
-  <form method="POST" id="tweet-edit-form" enctype="application/x-www-form-urlencoded">
-    {{ csrfField }}
-    <h5 id="tweet-user"><small>&commat; <span id="tweet-name"></span></small></h5>
-    <p id="tweet-content"></p>
-    <textarea id="tweet-content-textarea" name="content" class="hide"></textarea>
-    <button id="tweet-submit" type="submit" class="button hide small-12 column">Update</button>
-  </form>
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
+  <button id="tweet-edit-btn" class="tiny button hollow hide">edit</button>
+  <br/>
+  <h5 class="" id="tweet-user"><small>&commat; <span id="tweet-name"></span></small></h5>
+  <div class="">
+    <p id="tweet-content"></p>
+    <form method="POST" id="tweet-edit-form" enctype="application/x-www-form-urlencoded">
+      {{ csrfField }}
+      <textarea id="tweet-content-textarea" name="content" class="hide"></textarea>
+      <button id="tweet-submit" type="submit" class="button hide small-12 column">Update</button>
+    </form>
+  </div>
 </div>
 
 <script type="text/javascript">
