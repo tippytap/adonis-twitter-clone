@@ -31,7 +31,11 @@ class TweetController {
   }
 
   * update(request, response) {
-    //
+    const tweet = yield Tweet.find(request.param('id'))
+    const userInputs = yield request.all()
+    tweet.content = userInputs.content
+    yield tweet.save()
+    response.redirect('back')
   }
 
   * destroy(request, response) {
