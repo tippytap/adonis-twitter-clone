@@ -15,10 +15,14 @@
 {% endfor %}
 
 <div class="reveal" data-reveal id="modal-tweet">
-
   <button id="tweet-edit-btn" class="button hollow hide">edit</button>
-  <h5 id="tweet-user"><small>&commat; <span id="tweet-name"></span></small></h5>
-  <p id="tweet-content"></p>
+  <form id="tweet-edit-form" enctype="application/x-www-form-urlencoded">
+    {{ csrfField }}
+    <h5 id="tweet-user"><small>&commat; <span id="tweet-name"></span></small></h5>
+    <p id="tweet-content"></p>
+    <textarea id="tweet-content-textarea" class="hide"></textarea>
+    <button id="tweet-submit" type="submit" class="button hide small-12 column">Update</button>
+  </form>
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -26,6 +30,20 @@
 
 <script type="text/javascript">
   var $modal = $('#modal-tweet');
+  $('#tweet-edit-btn').click(function(){
+    if($(this).text() === "edit"){
+      $(this).text('cancel');
+      $modal.find('#tweet-content-textarea').removeClass('hide');
+      $modal.find('#tweet-content').addClass('hide');
+      $modal.find('#tweet-submit').removeClass('hide');
+    }
+    else{
+      $(this).text('edit');
+      $modal.find('#tweet-content').removeClass('hide');
+      $modal.find('#tweet-content-textarea').addClass('hide');
+      $modal.find('#tweet-submit').addClass('hide');
+    }
+  });
   $('.tweet').click(function(e){
     var route = "/getTweet/" + $(this).attr('id');
     $.ajax(route).done(function(r){
@@ -37,6 +55,8 @@
         }
       $modal.find('#tweet-user').html(r.username);
       $modal.find('#tweet-content').html(r.content);
+      $modal.find('#tweet-content-textarea').text(r.content);
+      $modal.find('#tweet-edit-form').attr('action', '/tweet/' + r.id + '?_method=PUT');
     });
   });
 </script>
