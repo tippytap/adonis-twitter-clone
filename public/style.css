@@ -123,6 +123,10 @@ body {
   margin-top: -3px;
 }
 
+#widget{
+  font-size: 1.25em;
+}
+
 #search-area{
   position: relative;
   margin-left: -15px;

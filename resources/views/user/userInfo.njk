@@ -19,9 +19,9 @@
       {#</li>#}
     {#</ul>#}
     {% if currentUser.id == user.id %}
-      <ul class="dropdown menu" data-dropdown-menu>
+      <ul class="menu" data-dropdown-menu>
         <li>
-          <a href="#">+</a>
+          <a id="widget" class="subheader" href="#"><i class="fi-widget"></i></a>
           <ul class="menu vertical">
             <li>
               <a href="/profile/{{ user.id }}" class="is-dropdown-menu-parent opens-right">Profile</a>
