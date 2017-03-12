@@ -5,6 +5,7 @@ const User = use('App/Model/User')
 const Follower = use('App/Model/Follower')
 const Tweet = use('App/Model/Tweet')
 const Database = use('Database')
+const Helpers = use('Helpers')
 
 class UserController {
 
@@ -33,6 +34,7 @@ class UserController {
     user.email = userInputs.email
     user.firstname = userInputs.firstname
     user.lastname = userInputs.lastname
+    user.profile_img_path = yield this.getDefaultImgPath(Helpers.publicPath('assets/default-profile.png'))
     user.is_active = true
 
     // save the new user to the database, but we have to make sure to yield it
@@ -45,6 +47,12 @@ class UserController {
     // redirect the user back to the login page so that they can login to the system
     response.redirect("/login")
 
+  }
+
+  * getDefaultImgPath(assetPath){
+    let i = assetPath.lastIndexOf('/a')
+    let path = assetPath.substr(i)
+    return path
   }
 
   /**
@@ -226,7 +234,7 @@ class UserController {
 
   * search(request, response){
     let searchTerm = request.input('search')
-    let users = yield Database.select('username', 'id').from('users').where('username', 'like', '%' + searchTerm + '%')
+    let users = yield Database.select('username', 'id', 'profile_img_path', 'firstname', 'lastname').from('users').where('username', 'like', '%' + searchTerm + '%')
     response.send(users)
   }
 

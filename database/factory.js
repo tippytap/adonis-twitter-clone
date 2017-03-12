@@ -26,7 +26,7 @@ Factory.blueprint('App/Model/User', (fake) => {
     username: fake.username(),
     firstname: fake.first(),
     lastname: fake.last(),
-    profile_img_path: fake.string(),
+    profile_img_path: '/assets/default-profile.png',
     email: fake.email(),
     password: fake.password()
   }

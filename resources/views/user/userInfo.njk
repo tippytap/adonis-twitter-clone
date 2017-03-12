@@ -1,0 +1,61 @@
+<div>
+  <div class="clearfix">
+    <img id="profile-img" class="float-left" src="{{ user.profile_img_path }}" />
+    <div class="float-left">
+      <h3>
+        {{ user.firstname + " " + user.lastname }}
+      </h3>
+      <small>
+        &commat; {{ user.username }}
+      </small>
+    </div>
+    {#<ul class="dropdown menu" data-dropdown-menu>#}
+      {#<li>#}
+        {#<a href="#">+</a>#}
+        {#<ul class="menu">#}
+          {#<li><a href="/profile/{{ user.id }}">View Profile</a></li>#}
+          {#<li><a href="/logout">Log out</a></li>#}
+        {#</ul>#}
+      {#</li>#}
+    {#</ul>#}
+    {% if currentUser.id == user.id %}
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <a href="#">+</a>
+          <ul class="menu vertical">
+            <li>
+              <a href="/profile/{{ user.id }}" class="is-dropdown-menu-parent opens-right">Profile</a>
+              <ul class="menu" data-dropdown-menu>
+                <li><a href="/profile/{{ user.id }}">View profile</a></li>
+                <li><a href="/users/{{ user.id }}/edit">Edit profile</a></li>
+                <li><a href="/account/{{ user.id }}">Account Settings</a></li>
+              </ul>
+            </li>
+            <li><a href="/logout">Log out</a></li>
+          </ul>
+        </li>
+      </ul>
+      {% elif user.isFollowed %}
+      <a class="button tiny hollow " href="#">Following</a>
+    {% else %}
+      <a href="#" class="button tiny">Follow</a>
+    {% endif %}
+  </div>
+  <br/>
+  <div id="user-meta">
+    <div id="headings" class="row">
+      <p class="column small-4"><small>TWEETS</small></p>
+      <p class="column small-4"><small>FOLLOWERS</small></p>
+      <p class="column small-4"><small>FOLLOWING</small></p>
+    </div>
+    <div id="data" class="row">
+      <p class="column small-4">{{ user.tweets_count }}</p>
+      <p class="column small-4">{{ user.followers_count }}</p>
+      <p class="column small-4">{{ user.following_count }}</p>
+    </div>
+    <div>
+      <p>
+        {{ user.description }}
+      </p>
+    </div>
+  </div>

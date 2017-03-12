@@ -1,7 +1,3 @@
-{#{{ form.open({action: "UserController.search"}) }}#}
-  {#{{ csrfField }}#}
-  {#{{ form.text('search', '', {placeholder: 'search Twittah'}) }}#}
-{#{{ form.close() }}#}
 {% if currentUser %}
 <div id="search-area">
   <input type="text" id="search" name="search" placeholder="Search Twittah users"/>
@@ -12,30 +8,37 @@
   </div>
 </div>
 <script type="text/javascript">
-  $('#search').keyup(function(){
-      if($('input#search').val() !== ""){
-        $('#search-results > ul').empty();
-        var searchTerm = $('input#search').val();
-        $.ajax({
-          type: "GET",
-          url: "/search",
-          data: {'search': searchTerm},
-        }).done(function(r){
-          for(var user in r){
-            var el = "<li><a href='/profile/" + r[user].id + "'>" + r[user].username +"</a></li>";
-            $('#search-results > ul').append(el);
-            $('#search-results').removeClass('hide');
-          }
-        });
-      }
-      else{
+  $('#search').keyup(function(e){
+      if(e.keyCode !== 9){
+        if($('input#search').val() !== ""){
           $('#search-results > ul').empty();
+          var searchTerm = $('input#search').val();
+          $('#search-results > ul').removeClass('hide');
+          $.ajax({
+            type: "GET",
+            url: "/search",
+            data: {'search': searchTerm},
+          }).done(function(r){
+            for(var user in r){
+              var el =
+                "<li>" +
+                "<a href='/profile/" + r[user].id + "'>"  +
+                "<img src='" + r[user].profile_img_path + "'/>" +
+                r[user].firstname + " " + r[user].lastname + " " +
+                "&commat; " + r[user].username +"</a>" +
+                "</li>";
+              $('#search-results > ul').append(el);
+              $('#search-results').removeClass('hide');
+            }
+          });
+        }
+        else{
+          $('#search-results > ul').empty();
+          $('#search-results > ul').addClass('hide');
+        }
       }
 
   });
-//  $('#search-area').blur(function(){
-//      $('#search-results > ul').empty();
-//  });
 </script>
 {% endif %}
 

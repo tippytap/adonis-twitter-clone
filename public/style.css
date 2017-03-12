@@ -101,3 +101,56 @@ body {
 .__footer li a:hover {
   opacity: 1;
 }
+
+
+#user #profile-img{
+  width: 75px;
+  height: 75px;
+  margin: -10px 10px 10px -10px;
+  border-radius: 50px;
+  border: 2px solid white;
+}
+
+#user h3 ~ small{
+  display: block;
+  margin-top: -3px;
+}
+
+#search-area{
+  position: relative;
+}
+
+#search-area input{
+  margin: 0;
+}
+
+#search-results ul{
+  background: white;
+  z-index: 1;
+  width: 100%;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  border: 1px solid gray;
+}
+#search-results ul li{
+  list-style: none;
+  background: white;
+  padding: 5px;
+  width: 100%;
+}
+#search-results ul li:hover{
+  background: lightgray;
+}
+
+#search-results ul li a{
+  display: block;
+}
+
+#search-results ul li a img{
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin-right: 15px;
+  border-radius: 50px;
+}
