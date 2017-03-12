@@ -22,7 +22,6 @@
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
-  {#<button id="tweet-edit-btn" class="tiny button hollow hide">edit</button>#}
   <br/>
   <h5 class="" id="tweet-user"><small>&commat; <span id="tweet-name"></span></small></h5>
   <div class="">
@@ -35,9 +34,8 @@
   </div>
   <div>
     <form method="POST" id="tweet-delete-form" enctype="application/x-www-form-urlencoded">
-      {{ crsfField }}
-      <a href="#" id="tweet-edit-btn" class="button hollow float-left hide">Edit</a>
-      <button type="submit" class="button hollow alert float-left" id="tweet-delete-btn" class="hide">Delete</button>
+      <a href="#" id="tweet-edit-btn" class="small-3 columns button hollow tiny float-left hide">Edit</a>
+      <button type="submit" class="button hollow alert tiny small-3 columns float-left" id="tweet-delete-btn" class="hide">Delete</button>
     </form>
   </div>
 </div>
@@ -67,6 +65,7 @@
         }
         else{
             $modal.find('#tweet-edit-btn').addClass('hide');
+            $modal.find('#tweet-delete-btn').addClass('hide');
         }
       $modal.find('#tweet-user').html(r.username);
       $modal.find('#tweet-content').html(r.content);

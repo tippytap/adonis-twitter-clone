@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45bb40d8-75d3-4a18-bd40-eb1bb553aa5e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TweetController.js" afterPath="$PROJECT_DIR$/app/Http/Controllers/TweetController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.js" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.js" afterPath="$PROJECT_DIR$/app/Http/routes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/development.sqlite" afterPath="$PROJECT_DIR$/database/development.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/master.njk" afterPath="$PROJECT_DIR$/resources/views/master.njk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/tweets/tweetList.njk" afterPath="$PROJECT_DIR$/resources/views/tweets/tweetList.njk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/profile.njk" afterPath="$PROJECT_DIR$/resources/views/user/profile.njk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/search.njk" afterPath="$PROJECT_DIR$/resources/views/user/search.njk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/userIndex.njk" afterPath="$PROJECT_DIR$/resources/views/userIndex.njk" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TweetController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TweetController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TweetController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="42" column="9" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
+            <state relative-caret-position="0">
+              <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -74,14 +66,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tweetList.njk" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tweetList.njk" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/tweets/tweetList.njk">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="77" column="103" lean-forward="false" selection-start-line="77" selection-start-column="103" selection-end-line="77" selection-end-column="103" />
+            <state relative-caret-position="-97">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="e#703#710#0#HTML" expanded="true" />
-                <element signature="e#856#864#0#HTML" expanded="true" />
+                <element signature="e#776#784#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -155,8 +147,8 @@
         <option value="$PROJECT_DIR$/resources/views/user/profile.njk" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.js" />
         <option value="$PROJECT_DIR$/resources/views/user/search.njk" />
-        <option value="$PROJECT_DIR$/resources/views/tweets/tweetList.njk" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TweetController.js" />
+        <option value="$PROJECT_DIR$/resources/views/tweets/tweetList.njk" />
       </list>
     </option>
   </component>
@@ -500,7 +492,7 @@
       <workItem from="1488550041758" duration="2387000" />
       <workItem from="1488567243300" duration="261000" />
       <workItem from="1488896804702" duration="96000" />
-      <workItem from="1488896991544" duration="48725000" />
+      <workItem from="1488896991544" duration="49244000" />
     </task>
     <task id="LOCAL-00001" summary="added some routes and controllers and migrations for users and tweets">
       <created>1485971125780</created>
@@ -513,7 +505,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112490000" />
+    <option name="totallyTimeSpent" value="113009000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -908,6 +900,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/account.njk">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TweetController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/userIndex.njk">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -918,30 +926,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/account.njk">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/tweets/tweetList.njk">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="77" column="103" lean-forward="false" selection-start-line="77" selection-start-column="103" selection-end-line="77" selection-end-column="103" />
+        <state relative-caret-position="-97">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="e#703#710#0#HTML" expanded="true" />
-            <element signature="e#856#864#0#HTML" expanded="true" />
+            <element signature="e#776#784#0#HTML" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TweetController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="42" column="9" lean-forward="false" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
