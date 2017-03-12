@@ -6,7 +6,8 @@ body {
   font-feature-settings: "kern", "liga", "pnum";
   -webkit-font-smoothing: antialiased;
   font-weight: lighter;
-  background: #ffffff;
+  /*background: #ffffff;*/
+  background: lightblue!important;
   margin: 3em;
 }
 
@@ -102,11 +103,17 @@ body {
   opacity: 1;
 }
 
+#userInfo{
+  padding: 10px 25px 25px 25px;
+  background: white;
+  width: 90%;
+  border-radius: 20px;
+}
 
 #user #profile-img{
-  width: 75px;
-  height: 75px;
-  margin: -10px 10px 10px -10px;
+  width: 85px;
+  height: 85px;
+  margin: -20px 10px 10px -10px;
   border-radius: 50px;
   border: 2px solid white;
 }
@@ -118,6 +125,8 @@ body {
 
 #search-area{
   position: relative;
+  margin-left: -15px;
+  padding-right: 14px;
 }
 
 #search-area input{
@@ -153,4 +162,28 @@ body {
   display: inline-block;
   margin-right: 15px;
   border-radius: 50px;
+}
+
+#logo small{
+  color: white;
+}
+
+.tweet{
+  background: white;
+}
+.tweet p{
+  padding: 20px 20px 0px 20px;
+}
+.tweet p:first-child{
+  margin-bottom: 0
+}
+.tweet hr{
+  margin: 20px 0 0 0;
+}
+
+header{
+  /*background: white;*/
+}
+header nav{
+  padding-top: 20px;
 }
