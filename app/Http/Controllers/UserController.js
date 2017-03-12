@@ -170,11 +170,12 @@ class UserController {
         tweet.username = user.username
         tweet.dateStr = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear()
       }
+      tweets = tweets.toJSON()
     }
     else
       tweets = { message: "No tweets yet!" }
 
-    yield response.sendView('user/profile', { 'user': user.toJSON(), 'tweets': tweets.toJSON() })
+    yield response.sendView('user/profile', { 'user': user.toJSON(), 'tweets': tweets })
   }
 
   /**
@@ -224,8 +225,8 @@ class UserController {
   }
 
   * search(request, response){
-    let searchTerm = "%${" + request.input('search') + "}%";
-    let users = User.query().where('username', 'like', searchTerm)
+    let searchTerm = request.input('search')
+    let users = yield Database.select('username', 'id').from('users').where('username', 'like', '%' + searchTerm + '%')
     response.send(users)
   }
 

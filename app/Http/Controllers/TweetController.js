@@ -39,7 +39,9 @@ class TweetController {
   }
 
   * destroy(request, response) {
-    //
+    const tweet = yield Tweet.find(request.param('id'))
+    yield tweet.delete()
+    response.redirect('back')
   }
 
   * getTweet(request, response){

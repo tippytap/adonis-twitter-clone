@@ -1,24 +1,28 @@
 
-{% for tweet in tweets %}
-  <article data-open="modal-tweet" class="tweet" id="{{ tweet.id }}">
-    <p><a href="/profile/{{ tweet.user_id }}">{{ tweet.username }}</a>
-      <small>{{ tweet.dateStr }}</small>
-      {% if tweet.created_at != tweet.updated_at %}
-        <small> Edited</small>
-      {% endif %}
-    </p>
-    <p>
-      {{ tweet.content }}
-    </p>
-    <hr/>
-  </article>
-{% endfor %}
+{% if tweets.message %}
+<article>{{ tweets.message }}</article>
+{% else %}
+    {% for tweet in tweets %}
+      <article data-open="modal-tweet" class="tweet" id="{{ tweet.id }}">
+        <p><a href="/profile/{{ tweet.user_id }}">{{ tweet.username }}</a>
+          <small>{{ tweet.dateStr }}</small>
+          {% if tweet.created_at != tweet.updated_at %}
+            <small> Edited</small>
+          {% endif %}
+        </p>
+        <p>
+          {{ tweet.content }}
+        </p>
+        <hr/>
+      </article>
+    {% endfor %}
+{% endif %}
 
 <div class="reveal" data-reveal id="modal-tweet">
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
-  <button id="tweet-edit-btn" class="tiny button hollow hide">edit</button>
+  {#<button id="tweet-edit-btn" class="tiny button hollow hide">edit</button>#}
   <br/>
   <h5 class="" id="tweet-user"><small>&commat; <span id="tweet-name"></span></small></h5>
   <div class="">
@@ -29,19 +33,26 @@
       <button id="tweet-submit" type="submit" class="button hide small-12 column">Update</button>
     </form>
   </div>
+  <div>
+    <form method="POST" id="tweet-delete-form" enctype="application/x-www-form-urlencoded">
+      {{ crsfField }}
+      <a href="#" id="tweet-edit-btn" class="button hollow float-left hide">Edit</a>
+      <button type="submit" class="button hollow alert float-left" id="tweet-delete-btn" class="hide">Delete</button>
+    </form>
+  </div>
 </div>
 
 <script type="text/javascript">
   var $modal = $('#modal-tweet');
   $('#tweet-edit-btn').click(function(){
-    if($(this).text() === "edit"){
-      $(this).text('cancel');
+    if($(this).text() === "Edit"){
+      $(this).text('Cancel edit');
       $modal.find('#tweet-content-textarea').removeClass('hide');
       $modal.find('#tweet-content').addClass('hide');
       $modal.find('#tweet-submit').removeClass('hide');
     }
     else{
-      $(this).text('edit');
+      $(this).text('Edit');
       $modal.find('#tweet-content').removeClass('hide');
       $modal.find('#tweet-content-textarea').addClass('hide');
       $modal.find('#tweet-submit').addClass('hide');
@@ -52,6 +63,7 @@
     $.ajax(route).done(function(r){
         if(r.author){
             $modal.find('#tweet-edit-btn').removeClass('hide');
+            $modal.find('#tweet-delete-btn').removeClass('hide');
         }
         else{
             $modal.find('#tweet-edit-btn').addClass('hide');
@@ -60,6 +72,10 @@
       $modal.find('#tweet-content').html(r.content);
       $modal.find('#tweet-content-textarea').text(r.content);
       $modal.find('#tweet-edit-form').attr('action', '/tweet/' + r.id + '?_method=PUT');
+      $modal.find('#tweet-delete-form').attr('action', '/tweet/' + r.id + '?_method=DELETE');
+      var csrf = $modal.find('#tweet-edit-form').find('input[type="hidden"]').attr('value');
+      console.log(csrf);
+      $modal.find('#tweet-delete-form').append("<input type='hidden' name='_csrf' value='" + csrf + "'/>");
     });
   });
 </script>

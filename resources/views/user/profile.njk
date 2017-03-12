@@ -53,9 +53,6 @@
       </div>
     </div>
     <div id="tweets" class="small-12 medium-8 columns">
-      {% if tweets.message %}
-        <article>{{ tweets.message }}</article>
-      {% else %}
         {% include 'tweets/tweetList' %}
         {#{% for tweet in tweets %}#}
           {#<article>#}
@@ -71,7 +68,7 @@
             {#<hr/>#}
           {#</article>#}
         {#{% endfor %}#}
-      {% endif %}
+      {#{% endif %}#}
     </div>
   </section>
 

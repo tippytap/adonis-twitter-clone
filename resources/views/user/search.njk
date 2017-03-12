@@ -1,3 +1,42 @@
-{{ form.open({action: "UserController.search"}) }}
-  {{ csrfField }}
-{{ form.close() }}
+{#{{ form.open({action: "UserController.search"}) }}#}
+  {#{{ csrfField }}#}
+  {#{{ form.text('search', '', {placeholder: 'search Twittah'}) }}#}
+{#{{ form.close() }}#}
+{% if currentUser %}
+<div id="search-area">
+  <input type="text" id="search" name="search" placeholder="Search Twittah users"/>
+  <div id="search-results" class="hide">
+    <ul>
+      {# search results pop up here #}
+    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+  $('#search').keyup(function(){
+      if($('input#search').val() !== ""){
+        $('#search-results > ul').empty();
+        var searchTerm = $('input#search').val();
+        $.ajax({
+          type: "GET",
+          url: "/search",
+          data: {'search': searchTerm},
+        }).done(function(r){
+          for(var user in r){
+            var el = "<li><a href='/profile/" + r[user].id + "'>" + r[user].username +"</a></li>";
+            $('#search-results > ul').append(el);
+            $('#search-results').removeClass('hide');
+          }
+        });
+      }
+      else{
+          $('#search-results > ul').empty();
+      }
+
+  });
+//  $('#search-area').blur(function(){
+//      $('#search-results > ul').empty();
+//  });
+</script>
+{% endif %}
+
+
