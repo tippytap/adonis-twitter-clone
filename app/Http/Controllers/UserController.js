@@ -91,24 +91,38 @@ class UserController {
 
   * updateAccount(request, response){
 
-    const user = request.auth.getUser()
+    const user = yield request.auth.getUser()
 
     const userInputs = request.all()
 
-    const validationEmail = yield Validator.validate(userInputs, User.updateEmailRules)
-    const validationUsername = yield Validator.validate(userInputs, User.updateUsernameRules)
+    let messages = []
 
+    let fails = false
 
-    if(user.email !== userInputs.email) {
-      if (validationUsername.fails() || validationEmail.fails()) {
-        let messages = []
-        yield request.withAll().andWith({errors: messages}).flash()
-        response.redirect('back')
+    console.log(userInputs.email === user.email)
+    if(userInputs.email !== user.email){
+      const validationEmail = yield Validator.validate(userInputs, User.updateEmailRules)
+      fails = validationEmail.fails()
+      for(var i in validationEmail.messages()){
+        messages.push(validationEmail.messages()[i])
       }
-      user.username = userInputs.username
-      user.email = userInputs.email
-      yield request.withAll().andWith({ messages: ["Account details updated!"] }).flash()
     }
+    if(userInputs.username !== user.username){
+      const validationUsername = yield Validator.validate(userInputs, User.updateUsernameRules)
+      fails = validationUsername.fails()
+      for(var i in validationUsername.messages()){
+        messages.push(validationUsername.messages()[i])
+      }
+    }
+
+    if(fails){
+      yield request.withAll().andWith({errors: messages}).flash()
+      response.redirect('back')
+    }
+    user.username = userInputs.username
+    user.email = userInputs.email
+    yield user.save()
+    yield request.withAll().andWith({ messages: ["Account details updated!"] }).flash()
 
     response.redirect('back')
   }
