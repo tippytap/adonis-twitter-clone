@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-weight: lighter;
   /*background: #ffffff;*/
-  background: #d1f3fc!important;
+  background: #e5f9ff!important;
   margin: 3em;
 }
 
@@ -161,11 +161,12 @@ body {
 #search-results ul{
   background: white;
   z-index: 1;
-  width: 100%;
+  width: 98%;
   position: absolute;
   padding: 0;
   margin: 0;
   border: 1px solid gray;
+  box-shadow: 0 1px 2px #7a7a7a;
 }
 #search-results ul li{
   list-style: none;
@@ -174,7 +175,7 @@ body {
   width: 100%;
 }
 #search-results ul li:hover{
-  background: #d1f3fc;
+  background: #e5f9ff;
 }
 
 #search-results ul li a{
@@ -187,7 +188,7 @@ body {
 }
 
 #logo small{
-  color: white;
+  color: #lightgrey;
 }
 
 .tweet{
@@ -201,7 +202,7 @@ body {
   border-bottom: 1px solid lightgrey;
 }
 .tweet:hover{
-  background: #d1f3fc;
+  background: #e5f9ff;
 }
 .tweet-meta{
   padding: 10px 0px 0px 0px;

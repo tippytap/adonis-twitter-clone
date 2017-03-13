@@ -13,6 +13,13 @@
       </div>
     </div>
     <div id="tweets" class="small-12 medium-8 columns">
+      <div id="new-tweet" class="clearfix">
+        {{ form.open({action: 'TweetController.store'}) }}
+        {{ csrfField }}
+        {{ form.textarea('newTweet', '', {placeholder: 'What&apos;s going on?'}) }}
+        {{ form.submit('Tweet', '', {class: 'button small expanded', id: "btnTweetSubmit"}) }}
+        {{ form.close() }}
+      </div>
         {% include 'tweets/tweetList' %}
     </div>
   </section>
