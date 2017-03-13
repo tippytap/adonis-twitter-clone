@@ -165,7 +165,8 @@ class UserController {
     user.isFollowed = false
     for(let i in userFollowers.value()){
       let follower = userFollowers.value()[i]
-      if(follower.id === loggedInUser.id)
+      console.log(follower.follower)
+      if(follower.follower === loggedInUser.id)
         user.isFollowed = true
     }
 
@@ -240,13 +241,6 @@ class UserController {
   }
 
   * follow(request, response){
-    const user = yield request.auth.getUser()
-    const following = yield user.followers()
-    for(let i in following){
-      if(following[i].user_id === request.param('user')){
-        response.send(false)
-      }
-    }
     const follower = new Follower()
     follower.user_id = request.param('userId')
     follower.follower = request.param('follower')
@@ -258,9 +252,8 @@ class UserController {
   * unfollow(request, response){
     const followerData = yield Database.from('followers').where({user_id: request.param('userId'), follower: request.param('follower')})
     const follower = yield Follower.find(followerData[0].id)
-    follower.is_following = false
-    yield follower.save()
-    response.send(follower)
+    yield follower.delete()
+    response.send(true)
   }
 
 

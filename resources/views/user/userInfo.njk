@@ -28,8 +28,10 @@
       </ul>
       {% elif user.isFollowed %}
         <button id="btn-following" data-currentUser="{{ currentUser.id }}" data-user="{{ user.id }}" class="button tiny hollow expanded">Following</button>
+        <button id="btn-follow" data-currentUser="{{ currentUser.id }}" data-user="{{ user.id }}" class="button tiny expanded hide">Follow</button>
       {% else %}
         <button id="btn-follow" data-currentUser="{{ currentUser.id }}" data-user="{{ user.id }}" class="button tiny expanded">Follow</button>
+        <button id="btn-following" data-currentUser="{{ currentUser.id }}" data-user="{{ user.id }}" class="button tiny hollow expanded hide">Following</button>
     {% endif %}
   </div>
   <br/>
@@ -51,7 +53,6 @@
     </div>
   </div>
 </div>
-{#<p>&copy; 2017 - Twittah, Inc.</p>#}
 
 
   <script type="text/javascript">
@@ -63,6 +64,8 @@
             method: 'GET'
         }).done(function(r){
            console.log(r);
+           $('#btn-follow').addClass('hide');
+           $('#btn-following').removeClass('hide');
         });
     });
     $('#btn-following').click(function(e){
@@ -73,6 +76,8 @@
           method: 'GET'
       }).done(function(r){
          console.log(r);
+         $('#btn-following').addClass('hide');
+         $('#btn-follow').removeClass('hide');
       });
     });
   </script>
