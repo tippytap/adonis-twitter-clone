@@ -3,8 +3,9 @@
 <article>{{ tweets.message }}</article>
 {% else %}
     {% for tweet in tweets %}
-      <article data-open="modal-tweet" class="tweet" id="{{ tweet.id }}">
-        <p><a href="/profile/{{ tweet.user_id }}">{{ tweet.username }}</a>
+      <article class="tweet" id="{{ tweet.id }}">
+        <p class="">
+          <a href="/profile/{{ tweet.user_id }}">{{ tweet.username }}</a>
           <small>{{ tweet.dateStr }}</small>
           {% if tweet.created_at != tweet.updated_at %}
             <small> Edited</small>
@@ -18,7 +19,8 @@
     {% endfor %}
 {% endif %}
 
-<div class="reveal" data-reveal id="modal-tweet">
+{#<div class="reveal" data-reveal id="modal-tweet">#}
+<div class="reveal" id="modal-tweet">
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -42,6 +44,7 @@
 
 <script type="text/javascript">
   var $modal = $('#modal-tweet');
+
   $('#tweet-edit-btn').click(function(){
     if($(this).text() === "Edit"){
       $(this).text('Cancel edit');
@@ -56,25 +59,29 @@
       $modal.find('#tweet-submit').addClass('hide');
     }
   });
+
   $('.tweet').click(function(e){
-    var route = "/getTweet/" + $(this).attr('id');
-    $.ajax(route).done(function(r){
-        if(r.author){
-            $modal.find('#tweet-edit-btn').removeClass('hide');
-            $modal.find('#tweet-delete-btn').removeClass('hide');
-        }
-        else{
-            $modal.find('#tweet-edit-btn').addClass('hide');
-            $modal.find('#tweet-delete-btn').addClass('hide');
-        }
-      $modal.find('#tweet-user').html(r.username);
-      $modal.find('#tweet-content').html(r.content);
-      $modal.find('#tweet-content-textarea').text(r.content);
-      $modal.find('#tweet-edit-form').attr('action', '/tweet/' + r.id + '?_method=PUT');
-      $modal.find('#tweet-delete-form').attr('action', '/tweet/' + r.id + '?_method=DELETE');
-      var csrf = $modal.find('#tweet-edit-form').find('input[type="hidden"]').attr('value');
-      console.log(csrf);
-      $modal.find('#tweet-delete-form').append("<input type='hidden' name='_csrf' value='" + csrf + "'/>");
-    });
+      if(e.target.tagName !== 'A'){
+        $modal.foundation('open');
+        var route = "/getTweet/" + $(this).attr('id');
+        $.ajax(route).done(function(r){
+            if(r.author){
+                $modal.find('#tweet-edit-btn').removeClass('hide');
+                $modal.find('#tweet-delete-btn').removeClass('hide');
+            }
+            else{
+                $modal.find('#tweet-edit-btn').addClass('hide');
+                $modal.find('#tweet-delete-btn').addClass('hide');
+            }
+          $modal.find('#tweet-user').html(r.username);
+          $modal.find('#tweet-content').html(r.content);
+          $modal.find('#tweet-content-textarea').text(r.content);
+          $modal.find('#tweet-edit-form').attr('action', '/tweet/' + r.id + '?_method=PUT');
+          $modal.find('#tweet-delete-form').attr('action', '/tweet/' + r.id + '?_method=DELETE');
+          var csrf = $modal.find('#tweet-edit-form').find('input[type="hidden"]').attr('value');
+          $modal.find('#tweet-delete-form').append("<input type='hidden' name='_csrf' value='" + csrf + "'/>");
+        });
+      }
   });
+
 </script>

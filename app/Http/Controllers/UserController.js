@@ -162,13 +162,14 @@ class UserController {
 
     const loggedInUser = yield request.auth.getUser()
     let userFollowers = yield user.followers().fetch()
+    user.isFollowed = false
     for(let i in userFollowers.value()){
       let follower = userFollowers.value()[i]
       if(follower.id === loggedInUser.id)
-        user.isFollowed = true;
-      else
-        user.isFollowed = false;
+        user.isFollowed = true
     }
+
+    console.log(user.isFollowed)
 
     let tweets = yield user.tweets().fetch()
     if(tweets.value().length > 0){
@@ -236,6 +237,22 @@ class UserController {
     let searchTerm = request.input('search')
     let users = yield Database.select('username', 'id', 'profile_img_path', 'firstname', 'lastname').from('users').where('username', 'like', '%' + searchTerm + '%')
     response.send(users)
+  }
+
+  * follow(request, response){
+    const follower = new Follower()
+    follower.user_id = request.param('userId')
+    follower.follower = request.param('follower')
+    follower.is_following = true
+    yield follower.save()
+    response.send(true)
+  }
+
+  * unfollow(request, response){
+    const followerData = yield Database.from('followers').where({user_id: request.param('userId'), follower: request.param('follower')})
+    // follower.is_following = false
+    // yield follower.save()
+    response.send(followerData)
   }
 
 

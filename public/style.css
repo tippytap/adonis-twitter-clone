@@ -110,12 +110,25 @@ body {
   border-radius: 20px;
 }
 
-#user #profile-img{
-  width: 85px;
-  height: 85px;
+#user #headings p{
+  margin-bottom: 0;
+}
+
+#user .profile-img{
   margin: -20px 10px 10px -10px;
+}
+
+.profile-img{
   border-radius: 50px;
   border: 2px solid white;
+}
+.profile-img.small{
+  width: 25px;
+  height: 25px;
+}
+.profile-img.large{
+  width: 85px;
+  height: 85px;
 }
 
 #user h3 ~ small{
@@ -123,7 +136,7 @@ body {
   margin-top: -3px;
 }
 
-#widget{
+.widget{
   font-size: 1.25em;
 }
 
@@ -161,11 +174,8 @@ body {
 }
 
 #search-results ul li a img{
-  width: 25px;
-  height: 25px;
   display: inline-block;
   margin-right: 15px;
-  border-radius: 50px;
 }
 
 #logo small{
@@ -191,3 +201,19 @@ header{
 header nav{
   padding-top: 20px;
 }
+
+#new-tweet{
+  margin-top: 30px;
+  /*padding: 10px 25px 25px 25px;*/
+}
+
+.text-tiny{
+  font-size: 0.5em;
+}
+.text-small{
+  font-size: 0.75em;
+}
+.text-large{
+  font-size: 1.5em;
+}
+

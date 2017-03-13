@@ -6,70 +6,14 @@
     <div id="user"
          class="small-12 medium-4 columns sticky"
          data-sticky
-         data-margin-top="0"
+         data-margin-top="6"
     >
       <div>
-        {% include 'user/userInfo' %}
-        {#<div class="clearfix">#}
-            {#<h3 class="float-left">#}
-              {#{{ user.firstname + " " + user.lastname }}#}
-              {#<small>#}
-                {#&commat; {{ user.username }}&nbsp;&nbsp;#}
-              {#</small>#}
-            {#</h3>#}
-            {#{% if currentUser.id == user.id %}#}
-                {#<ul class="dropdown menu" data-dropdown-menu>#}
-                  {#<li>#}
-                    {#<a href="#">+</a>#}
-                    {#<ul class="menu">#}
-                      {#<li><a href="/users/{{ user.id }}/edit">Edit Profile</a></li>#}
-                      {#<li><a href="/account/{{ user.id }}">Account Settings</a></li>#}
-                      {#<li><a href="/logout">Log out</a></li>#}
-                    {#</ul>#}
-                  {#</li>#}
-                {#</ul>#}
-            {#{% elif user.isFollowed %}#}
-              {#<a class="button tiny hollow " href="#">Following</a>#}
-            {#{% else %}#}
-              {#<a href="#" class="button tiny">Follow</a>#}
-            {#{% endif %}#}
-        {#</div>#}
-        {#<div class="">#}
-          {#<div class="row">#}
-            {#<p class="column small-4"><small>TWEETS</small></p>#}
-            {#<p class="column small-4"><small>FOLLOWERS</small></p>#}
-            {#<p class="column small-4"><small>FOLLOWING</small></p>#}
-          {#</div>#}
-          {#<div class="row">#}
-            {#<p class="column small-4">{{ user.tweets_count }}</p>#}
-            {#<p class="column small-4">{{ user.followers_count }}</p>#}
-            {#<p class="column small-4">{{ user.following_count }}</p>#}
-          {#</div>#}
-        {#</div>#}
-        {#<div>#}
-          {#<p>#}
-            {#{{ user.description }}#}
-          {#</p>#}
-        {#</div>#}
-      {#</div>#}
+          {% include 'user/userInfo' %}
+      </div>
     </div>
     <div id="tweets" class="small-12 medium-8 columns">
         {% include 'tweets/tweetList' %}
-        {#{% for tweet in tweets %}#}
-          {#<article>#}
-            {#<p><a href="#">{{ tweet.username }}</a>#}
-              {#<small>{{ tweet.dateStr }}</small>#}
-              {#{% if tweet.created_at != tweet.updated_at %}#}
-                {#<small> Edited</small>#}
-              {#{% endif %}#}
-            {#</p>#}
-            {#<p>#}
-              {#{{ tweet.content }}#}
-            {#</p>#}
-            {#<hr/>#}
-          {#</article>#}
-        {#{% endfor %}#}
-      {#{% endif %}#}
     </div>
   </section>
 

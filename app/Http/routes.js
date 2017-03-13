@@ -56,4 +56,7 @@ Route.group('users', () => {
 
   Route.post('/login', 'UserController.login')
   Route.get('/logout', 'UserController.logout')
+
+  Route.get('/follow/:userId/:follower', 'UserController.follow')
+  Route.get('/unfollow/:userId/:follower', 'UserController.unfollow')
 })

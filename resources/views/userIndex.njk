@@ -8,21 +8,21 @@
          data-margin-top="6"
     >
         {% include 'user/userInfo' %}
-        <hr/>
-        <div>
-          <h5>New Tweet</h5>
-          {{ form.open({action: 'TweetController.store'}) }}
-            {{ csrfField }}
-            {{ form.textarea('newTweet', '', {placeholder: 'What&apos;s going on?'}) }}
-            {{ form.submit('Tweet', '', {class: 'button small expanded'}) }}
-          {{ form.close() }}
+
+      <div id="new-tweet" class="clearfix">
+        {{ form.open({action: 'TweetController.store'}) }}
+        {{ csrfField }}
+        <div class="small-12 columns float-left">
+          {{ form.textarea('newTweet', '', {placeholder: 'What&apos;s going on?'}) }}
+          {{ form.submit('Tweet', '', {class: 'button small expanded hide', id: "btnTweetSubmit"}) }}
         </div>
-          <p>&copy; 2017 - Twittah, Inc.</p>
+        {{ form.close() }}
       </div>
     </div>
-      <div id="tweets" class="small-12 medium-8 columns">
-        {% include 'tweets/tweetList' %}
-      </div>
+
+    <div id="tweets" class="small-12 medium-8 columns">
+      {% include 'tweets/tweetList' %}
+    </div>
   </section>
   {% include 'scripts/foundation' %}
 
