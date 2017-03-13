@@ -9,18 +9,16 @@
     >
         {% include 'user/userInfo' %}
 
-      <div id="new-tweet" class="clearfix">
-        {{ form.open({action: 'TweetController.store'}) }}
-        {{ csrfField }}
-        <div class="small-12 columns float-left">
-          {{ form.textarea('newTweet', '', {placeholder: 'What&apos;s going on?'}) }}
-          {{ form.submit('Tweet', '', {class: 'button small expanded hide', id: "btnTweetSubmit"}) }}
-        </div>
-        {{ form.close() }}
-      </div>
     </div>
 
     <div id="tweets" class="small-12 medium-8 columns">
+      <div id="new-tweet" class="clearfix">
+        {{ form.open({action: 'TweetController.store'}) }}
+        {{ csrfField }}
+          {{ form.textarea('newTweet', '', {placeholder: 'What&apos;s going on?'}) }}
+          {{ form.submit('Tweet', '', {class: 'button small expanded', id: "btnTweetSubmit"}) }}
+        {{ form.close() }}
+      </div>
       {% include 'tweets/tweetList' %}
     </div>
   </section>

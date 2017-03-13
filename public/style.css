@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-weight: lighter;
   /*background: #ffffff;*/
-  background: lightblue!important;
+  background: #d1f3fc!important;
   margin: 3em;
 }
 
@@ -107,7 +107,8 @@ body {
   padding: 10px 25px 25px 25px;
   background: white;
   width: 90%;
-  border-radius: 20px;
+  border-radius: 10px;
+  box-shadow: -3px 3px 0px #7a7a7a;
 }
 
 #user #headings p{
@@ -116,6 +117,9 @@ body {
 
 #user .profile-img{
   margin: -20px 10px 10px -10px;
+}
+.tweet .profile-img{
+  margin: 10px;
 }
 
 .profile-img{
@@ -129,6 +133,10 @@ body {
 .profile-img.large{
   width: 85px;
   height: 85px;
+}
+.profile-img.medium{
+  width: 50px;
+  height: 50px;
 }
 
 #user h3 ~ small{
@@ -166,7 +174,7 @@ body {
   width: 100%;
 }
 #search-results ul li:hover{
-  background: lightgray;
+  background: #d1f3fc;
 }
 
 #search-results ul li a{
@@ -184,9 +192,19 @@ body {
 
 .tweet{
   background: white;
+  cursor: pointer;
+  padding: 5px;
+  margin-top: -1px;
+  border-top: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
 }
-.tweet p{
-  padding: 20px 20px 0px 20px;
+.tweet:hover{
+  background: #d1f3fc;
+}
+.tweet-meta{
+  padding: 10px 0px 0px 0px;
 }
 .tweet p:first-child{
   margin-bottom: 0
@@ -203,10 +221,16 @@ header nav{
 }
 
 #new-tweet{
-  margin-top: 30px;
-  /*padding: 10px 25px 25px 25px;*/
+  padding: 10px 10px 0 10px;
+  background: #eaeaea;
+  border: 1px solid lightgrey;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
-
+#btnTweetSubmit{
+  display: inline-block;
+  margin-top: -10px;
+}
 .text-tiny{
   font-size: 0.5em;
 }
