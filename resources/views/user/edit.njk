@@ -6,7 +6,7 @@
 
     <div id="user" class="small-12 medium-4 columns">
       <div>
-        {{ form.open({ action: 'UserController.update', params: {id: user.id} }) }}
+        {{ form.open({ action: 'UserController.update', params: {id: user.id}, files: true}) }}
           {{ csrfField }}
 
           {{ form.label('firstname', 'First Name') }}
@@ -17,6 +17,9 @@
 
           {{ form.label('description', 'About me') }}
           {{ form.textarea('description', user.description, {placeholder: "Tell us about yourself!"}) }}
+
+          {{ form.label('profile_img', 'Avatar') }}
+          {{ form.file('profile_img') }}
 
       </div>
       <nav class="">

@@ -66,6 +66,16 @@ class UserController {
     user.lastname = userInputs.lastname
     user.description = userInputs.description
 
+    const profileImg = request.file('profile_img', {
+      maxSize: '2mb',
+      allowedExtensions: ['jpg', 'png', 'jpeg', 'gif']
+    })
+    if(profileImg.file.size > 0){
+      const fileName = user.username + "." + profileImg.extension()
+      yield profileImg.move(Helpers.publicPath('assets'), fileName)
+      user.profile_img_path = yield this.getDefaultImgPath(profileImg.uploadPath())
+    }
+
     yield user.save()
 
     yield request.withAll().andWith({ messages: ["Profile updated!"] }).flash()
@@ -121,13 +131,14 @@ class UserController {
     const following = yield Follower.query().where('follower', user.id)
     user.following_count = following.length
 
-    const allTweets = []
+    let allTweets = []
     let myTweets = yield user.tweets().fetch()
     for(let i in myTweets.value()){
       let tweet = myTweets.value()[i]
       let date = tweet.getDate()
       tweet.username = user.username
       tweet.dateStr = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear()
+      tweet.profile_img_path = user.profile_img_path
       allTweets.push(tweet)
     }
 
@@ -140,11 +151,25 @@ class UserController {
         let date = tweet.getDate()
         tweet.username = user.username
         tweet.dateStr = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear()
+        tweet.profile_img_path = user.profile_img_path
         allTweets.push(tweet)
       }
     }
 
+    allTweets = yield this.orderTweetsByTime(allTweets)
+
     yield response.sendView('userIndex', { 'user': user.toJSON(), 'tweets': allTweets })
+  }
+
+  * orderTweetsByTime(allTweets){
+    allTweets.sort(function(a, b){
+      if(a.created_at < b.created_at)
+        return 1
+      if(a.created_at > b.created_at)
+        return -1
+      return 0
+    })
+    return allTweets
   }
 
   /**
@@ -170,8 +195,6 @@ class UserController {
         user.isFollowed = true
     }
 
-    console.log(user.isFollowed)
-
     let tweets = yield user.tweets().fetch()
     if(tweets.value().length > 0){
       for(let j in tweets.value()){
@@ -179,8 +202,10 @@ class UserController {
         let date = tweet.getDate()
         tweet.username = user.username
         tweet.dateStr = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear()
+        tweet.profile_img_path = user.profile_img_path
       }
       tweets = tweets.toJSON()
+      tweets = yield this.orderTweetsByTime(tweets)
     }
     else
       tweets = { message: "No tweets yet!" }

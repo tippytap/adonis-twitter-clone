@@ -26,20 +26,6 @@
       <div id="search" class="small-8 columns">
         {% include 'user/search' %}
       </div>
-      {#<ul class="menu small-9 columns">#}
-        {#{% if currentUser %}#}
-          {#<li>#}
-            {#<a href="/home">Home</a>#}
-          {#</li>#}
-          {#<li>#}
-            {#<a href="/logout">Log out</a>#}
-          {#</li>#}
-        {#{% else %}#}
-          {#<li>#}
-            {#<a href="/register">Register</a>#}
-          {#</li>#}
-        {#{% endif %}#}
-      {#</ul>#}
     </nav>
   </header>
 
@@ -73,7 +59,6 @@
       {% endblock %}
     </div>
   </section>
-
 <script type="text/javascript">
   $('#logo').hover(function(){
       if($('#homeIcon').hasClass('hide')){
@@ -84,5 +69,6 @@
   });
 </script>
 
+{% include 'scripts/foundation' %}
 </body>
 </html>

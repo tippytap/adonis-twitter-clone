@@ -5,7 +5,7 @@
     {% for tweet in tweets %}
       <article class="tweet clearfix" id="{{ tweet.id }}">
           <div class="float-left">
-            <img class="profile-img medium" src="{{ user.profile_img_path }}" />
+            <img class="profile-img medium" src="{{ tweet.profile_img_path }}" />
           </div>
           <div>
             <p class="tweet-meta">

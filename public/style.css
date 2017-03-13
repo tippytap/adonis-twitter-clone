@@ -122,9 +122,15 @@ body {
   margin: 10px;
 }
 
+#tweets{
+  min-height: 300px;
+  margin-bottom: 30px;
+}
+
 .profile-img{
   border-radius: 50px;
   border: 2px solid white;
+  background: lightcyan;
 }
 .profile-img.small{
   width: 25px;
