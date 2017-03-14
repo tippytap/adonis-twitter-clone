@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45bb40d8-75d3-4a18-bd40-eb1bb553aa5e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/style.css" afterPath="$PROJECT_DIR$/public/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/userIndex.njk" afterPath="$PROJECT_DIR$/resources/views/userIndex.njk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/emiller46.jpg" afterPath="$PROJECT_DIR$/public/assets/emiller46.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/development.sqlite" afterPath="$PROJECT_DIR$/database/development.sqlite" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -443,7 +442,7 @@
       <workItem from="1488550041758" duration="2387000" />
       <workItem from="1488567243300" duration="261000" />
       <workItem from="1488896804702" duration="96000" />
-      <workItem from="1488896991544" duration="88990000" />
+      <workItem from="1488896991544" duration="89103000" />
     </task>
     <task id="LOCAL-00001" summary="added some routes and controllers and migrations for users and tweets">
       <created>1485971125780</created>
@@ -456,7 +455,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152755000" />
+    <option name="totallyTimeSpent" value="152868000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -469,7 +468,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="733" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.40813008" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
