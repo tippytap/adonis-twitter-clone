@@ -6,9 +6,13 @@ const Follower = use('App/Model/Follower')
 const Tweet = use('App/Model/Tweet')
 const Database = use('Database')
 const Helpers = use('Helpers')
+const Hash = use('Hash')
 
 class UserController {
 
+  /**
+   * Save a new user to the database
+   * */
   * store(request, response) {
 
     // get all inputs
@@ -49,6 +53,9 @@ class UserController {
 
   }
 
+  /**
+   * helper to get the proper image path to store
+   * */
   * getDefaultImgPath(assetPath){
     let i = assetPath.lastIndexOf('/a')
     let path = assetPath.substr(i)
@@ -84,11 +91,17 @@ class UserController {
 
   }
 
+  /**
+   * show user account details
+   * */
   * account(request, response){
     const user = yield User.find(request.param('id'))
     yield response.sendView('user/account', {'user': user.toJSON()})
   }
 
+  /**
+   * Update user account details
+   * */
   * updateAccount(request, response){
 
     const user = yield request.auth.getUser()
@@ -99,7 +112,6 @@ class UserController {
 
     let fails = false
 
-    console.log(userInputs.email === user.email)
     if(userInputs.email !== user.email){
       const validationEmail = yield Validator.validate(userInputs, User.updateEmailRules)
       fails = validationEmail.fails()
@@ -119,6 +131,7 @@ class UserController {
       yield request.withAll().andWith({errors: messages}).flash()
       response.redirect('back')
     }
+
     user.username = userInputs.username
     user.email = userInputs.email
     yield user.save()
@@ -128,7 +141,22 @@ class UserController {
   }
 
   * deactivate(request, response){
-    const user = request.auth.getUser()
+    const user = yield request.auth.getUser()
+    user.is_active = false
+    yield user.save()
+    response.redirect('/')
+  }
+
+  * return(request, response){
+    yield response.sendView('user/return')
+  }
+
+  * reactivate(request, response){
+    const userInput = request.all()
+    const user = yield User.findBy('username', userInput.username)
+    user.is_active = true
+    yield user.save()
+    response.redirect('/')
   }
 
   /**
@@ -175,6 +203,9 @@ class UserController {
     yield response.sendView('userIndex', { 'user': user.toJSON(), 'tweets': allTweets })
   }
 
+  /**
+   * Helper to sort tweets by time
+   * */
   * orderTweetsByTime(allTweets){
     allTweets.sort(function(a, b){
       if(a.created_at < b.created_at)

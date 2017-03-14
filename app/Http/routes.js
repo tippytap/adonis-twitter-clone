@@ -23,9 +23,17 @@ const User = use('App/Model/User')
 // VANILLA ROUTES
 Route.get('/', function * (request, response){
   const isLoggedIn = yield request.auth.check()
-  if(isLoggedIn){
-    response.redirect('home')
-    return
+  const user = yield request.auth.getUser()
+  if(user){
+    if(user.is_active == true){
+      if(isLoggedIn){
+        response.redirect('home')
+        return
+      }
+    }
+    else{
+      yield request.auth.logout()
+    }
   }
   response.redirect('/login')
 })
@@ -53,6 +61,8 @@ Route.group('users', () => {
 
   Route.get('/deactivate', 'UserController.deactivate')
   Route.post('/deactivate', 'UserController.deactivate')
+  Route.get('/return/', 'UserController.return')
+  Route.get('/reactivate/', 'UserController.reactivate')
 
   Route.post('/login', 'UserController.login')
   Route.get('/logout', 'UserController.logout')

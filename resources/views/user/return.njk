@@ -1,0 +1,22 @@
+{% extends 'master' %}
+
+{% block content %}
+
+
+<section class="row">
+  <div class="small-9 columns">
+    <h3>Returning to Twittah?</h3>
+    <p>We're glad to have you back! Please give us your old username and we'll reactivate you.</p>
+    {{ form.open({ action: 'UserController.reactivate'}) }}
+    {{ csrfField }}
+    {{ form.label('username', 'Username') }}
+    {{ form.text('username') }}
+    {{ form.submit('Return to Twittah', '', {class: 'button'}) }}
+    {{ form.close() }}
+  </div>
+</section>
+
+
+
+
+{% endblock %}
