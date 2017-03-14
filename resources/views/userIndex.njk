@@ -3,7 +3,7 @@
 {% block content %}
   <br/>
   <section id="UserHome" class="row" data-sticky-container>
-    <div id="user" class="small-12 medium-4 columns sticky"
+    <div id="user" class="medium-4 columns sticky"
          data-sticky
          data-margin-top="6"
     >
@@ -11,7 +11,7 @@
 
     </div>
 
-    <div id="tweets" class="small-12 medium-8 columns">
+    <div id="tweets" class="small-8 columns">
       <div id="new-tweet" class="clearfix">
         {{ form.open({action: 'TweetController.store'}) }}
         {{ csrfField }}
